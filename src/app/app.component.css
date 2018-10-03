@@ -4,3 +4,8 @@ body{
     border: 0;
     overflow: hidden;
 }
+
+.hudBar{
+    display: flex;
+    flex-direction: row;
+}

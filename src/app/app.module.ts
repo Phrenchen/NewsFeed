@@ -7,6 +7,7 @@ import { FeedBubbleComponent } from './news-feed/feed-bubble/feed-bubble.compone
 import { TickerComponent } from './news-feed/ticker/ticker.component';
 import { FavouriteBubbleComponent } from './news-feed/favourite-bubble/favourite-bubble.component';
 import { NewsListComponent } from './news-feed/news-list/news-list.component';
+import { NewsItemComponent } from './news-feed/news-item/news-item.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { NewsListComponent } from './news-feed/news-list/news-list.component';
     FeedBubbleComponent,
     TickerComponent,
     FavouriteBubbleComponent,
-    NewsListComponent
+    NewsListComponent,
+    NewsItemComponent
   ],
   imports: [
     BrowserModule

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { INewsItem } from '../model/NewsItemVO';
 
 @Component({
@@ -10,14 +10,21 @@ export class TickerComponent implements OnInit, OnChanges {
 
   @Input() news: INewsItem[];
 
+  @Output() itemClicked: EventEmitter<INewsItem> = new EventEmitter<INewsItem>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    console.log(this.news);
+    // console.log(changes);
+    // console.log(this.news);
   }
 
+
+  tickerItemClicked(item: INewsItem): void {
+    // console.log('ticker item clicked: ' + item.title);
+    this.itemClicked.emit(item);
+  }
 }

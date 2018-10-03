@@ -10,5 +10,10 @@
   <app-ticker 
     class="hud-icon-ticker"
     [news]="news"
+    (itemClicked)="onTickerItemClicked($event)"
   ></app-ticker>
+
+  <app-news-item class="selected-item-details" *ngIf="hasSelectedItem()"
+    [item]="selectedItem"
+  ></app-news-item>
 </div>

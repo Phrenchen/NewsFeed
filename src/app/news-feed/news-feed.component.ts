@@ -10,6 +10,8 @@ import { INewsItem } from './model/NewsItemVO';
 export class NewsFeedComponent implements OnInit {
   private news: INewsItem[] = [];
 
+  private selectedItem: INewsItem = null;
+
   constructor(newsService: NewsServiceService) {
     newsService.requestNews()
       .then((result: INewsItem[]) => {
@@ -22,19 +24,29 @@ export class NewsFeedComponent implements OnInit {
   ngOnInit() {
   }
 
-  getUnreadFavouriteCount() {
+  public getUnreadFavouriteCount() {
     const unreadFavourites = this.news.filter( item => {
       return item.isFavourite && !item.isRead;
     });
-    console.log('unread favourites: ' + unreadFavourites.length);
+    // console.log('unread favourites: ' + unreadFavourites.length);
     return unreadFavourites.length;
   }
 
-  getUnreadNewsCount() {
+  public getUnreadNewsCount() {
     const unreadNews = this.news.filter( item => {
       return !item.isRead;
     });
-    console.log('unread news: ' + unreadNews.length);
+    // console.log('unread news: ' + unreadNews.length);
     return unreadNews.length;
+  }
+
+  public onTickerItemClicked(item: INewsItem) {
+    console.log('news feed clicked: ' + item.id);
+    this.selectedItem = this.selectedItem !== item ? item : null;
+  }
+
+  hasSelectedItem() {
+    console.log('has selected item? ' + (this.selectedItem !== null) );
+    return this.selectedItem !== null;
   }
 }
