@@ -1,0 +1,14 @@
+<div class="news-feed">
+  <app-favourite-bubble 
+    class="hud-icon-favourite-bubble"
+    [counter]="getUnreadFavouriteCount()"
+  ></app-favourite-bubble>
+  <app-feed-bubble 
+    class="hud-icon-feed-bubble"
+    [counter]="getUnreadNewsCount()"
+  ></app-feed-bubble>
+  <app-ticker 
+    class="hud-icon-ticker"
+    [news]="news"
+  ></app-ticker>
+</div>
