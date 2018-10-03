@@ -42,7 +42,7 @@ export class NewsFeedComponent implements OnInit {
 
   public onTickerItemClicked(item: INewsItem) {
     console.log('news feed clicked: ' + item.id);
-    this.selectedItem = this.selectedItem !== item ? item : null;
+    this.selectedItem = (!this.selectedItem || this.selectedItem !== item) ? item : null;
   }
 
   hasSelectedItem() {
