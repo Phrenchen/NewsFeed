@@ -13,7 +13,7 @@
     (itemClicked)="onTickerItemClicked($event)"
   ></app-ticker>
 
-  <app-news-item class="selected-item-details" *ngIf="hasSelectedItem()"
-    [item]="selectedItem"
-  ></app-news-item>
 </div>
+<app-news-item class="selected-item-details" *ngIf="hasSelectedItem()"
+  [item]="selectedItem"
+></app-news-item>

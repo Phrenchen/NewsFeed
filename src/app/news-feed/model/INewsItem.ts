@@ -9,21 +9,6 @@
  *      - traffic situation at current location (possible?)
  */
 
-export default class NewsItem implements INewsItem {
-    id: number;
-    isRead: boolean;
-    isFavourite: boolean;
-    dateCreated: Date;
-    dateUpdated: Date;
-    dateRead: Date;
-    seoDescritpion: string;
-    sortOrder: string;
-    title: string;
-    shortDescription: string;
-    longDescription: string;
-}
-
-
 export interface INewsItem {
     id: number;
     isRead: boolean;
@@ -32,6 +17,9 @@ export interface INewsItem {
     // content meta
     dateCreated: Date;
     dateUpdated: Date;
+    dateStart: Date;        // is displayed from this date until
+    dateEnd: Date;          // this date
+
     dateRead: Date;
     seoDescritpion: string;
     sortOrder: string;
@@ -40,6 +28,7 @@ export interface INewsItem {
     title: string;                  // HTML
     shortDescription: string;       // HTML
     longDescription: string;        // HTML
+    detailUrl: string;
 
 }
 

@@ -1,5 +1,4 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { INewsItem } from './model/NewsItemVO';
 import axios, { AxiosResponse } from 'axios';
 
 @Injectable({

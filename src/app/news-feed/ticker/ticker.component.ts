@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
-import { INewsItem } from '../model/NewsItemVO';
+import { INewsItem } from '../model/INewsItem';
 
 @Component({
   selector: 'app-ticker',

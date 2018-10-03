@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsServiceService } from './news-service.service';
-import { INewsItem } from './model/NewsItemVO';
+import { INewsItem } from './model/INewsItem';
 
 @Component({
   selector: 'app-news-feed',
