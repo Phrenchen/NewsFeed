@@ -1,5 +1,6 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { INewsItem } from './model/NewsItemVO';
+import axios, { AxiosResponse } from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -7,74 +8,21 @@ import { INewsItem } from './model/NewsItemVO';
 export class NewsServiceService {
 
   @Output() newsUpdate = new EventEmitter< string >();
- 
-  // replace with http request. promise?
-  private news: INewsItem[] = [];
 
   constructor() { }
 
+  /**
+   * returns INewsItem[]
+   */
   public requestNews(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      // http call
-      // ...
-      // parse result & resolve promise
-      const responseData = [{
-        'id': '1',
-        'isRead': false,
-        'isFavourite': true,
+    return axios.get('http://127.0.0.1:3000/news')
+      .then((response: AxiosResponse<any>) => {
+        return response.data;
 
-        // content meta
-        dateCreated: new Date(),
-        dateUpdated: new Date(),
-        dateRead: new Date(),
-        seoDescritpion: 'seo tags',
-        sortOrder: 1,
-
-        // content
-        title: 'news title',                      // HTML
-        shortDescription: 'short description',    // HTML
-        longDescription: 'long description'       // HTML
-      },
-      {
-        'id': '2',
-        'isRead': false,
-        'isFavourite': false,
-
-        // content meta
-        dateCreated: new Date(),
-        dateUpdated: new Date(),
-        dateRead: new Date(),
-        seoDescritpion: 'seo tags',
-        sortOrder: 2,
-
-        // content
-        title: 'news title',                      // HTML
-        shortDescription: 'short description',    // HTML
-        longDescription: 'long description'       // HTML
-      },
-      {
-        'id': '3',
-        'isRead': true,
-        'isFavourite': false,
-
-        // content meta
-        dateCreated: new Date(),
-        dateUpdated: new Date(),
-        dateRead: new Date(),
-        seoDescritpion: 'seo tags',
-        sortOrder: 3,
-
-        // content
-        title: 'news title',                      // HTML
-        shortDescription: 'short description',    // HTML
-        longDescription: 'long description'       // HTML
-      }
-    ];
-      // console.log('response received. ');
-
-      resolve(responseData);
-
-      // reject('reason: some error');
-    });
+      })
+      .catch(error => {
+        console.log(error);
+        return [];
+      });
   }
 }

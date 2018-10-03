@@ -12,23 +12,24 @@ export class NewsFeedComponent implements OnInit {
 
   private selectedItem: INewsItem = null;
 
-  constructor(newsService: NewsServiceService) {
-    newsService.requestNews()
-      .then((result: INewsItem[]) => {
-        console.log('received result: ');
-        console.log(result);
-        this.news = result;
-      });
-   }
+  constructor(private newsService: NewsServiceService) {
+    this.getUsers();
+  }
 
   ngOnInit() {
+  }
+
+  private async getUsers() {
+    const response = await this.newsService.requestNews();
+    console.log('received response');
+    console.log(response);
+    this.news = response;
   }
 
   public getUnreadFavouriteCount() {
     const unreadFavourites = this.news.filter( item => {
       return item.isFavourite && !item.isRead;
     });
-    // console.log('unread favourites: ' + unreadFavourites.length);
     return unreadFavourites.length;
   }
 
@@ -36,17 +37,14 @@ export class NewsFeedComponent implements OnInit {
     const unreadNews = this.news.filter( item => {
       return !item.isRead;
     });
-    // console.log('unread news: ' + unreadNews.length);
     return unreadNews.length;
   }
 
   public onTickerItemClicked(item: INewsItem) {
-    console.log('news feed clicked: ' + item.id);
     this.selectedItem = (!this.selectedItem || this.selectedItem !== item) ? item : null;
   }
 
   hasSelectedItem() {
-    console.log('has selected item? ' + (this.selectedItem !== null) );
     return this.selectedItem !== null;
   }
 }
