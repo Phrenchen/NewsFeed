@@ -10,9 +10,6 @@
     cursor: pointer;
     border: 1px solid red;
     min-width: min-content;
-    margin-left: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .ticker-item:hover{

@@ -2,6 +2,8 @@
     border: 1px solid black;
     width: auto;
     cursor: pointer;
+    max-width: 120px;
+    padding: 5px 5px 5px 5px;
 }
 
 .teaser-thumbnail{
