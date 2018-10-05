@@ -1,0 +1,9 @@
+.card{
+    border: 1px solid black;
+    width: auto;
+    cursor: pointer;
+}
+
+.teaser-thumbnail{
+    max-width: 100px;
+}

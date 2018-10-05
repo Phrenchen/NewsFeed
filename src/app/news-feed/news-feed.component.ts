@@ -11,6 +11,7 @@ export class NewsFeedComponent implements OnInit {
   private news: NewsItem[] = [];
 
   private selectedItem: NewsItem = null;
+  private isLongVersionRequested = false;
 
   constructor(private newsService: NewsServiceService) {
     this.getUsers();
@@ -21,8 +22,7 @@ export class NewsFeedComponent implements OnInit {
 
   private async getUsers() {
     const response = await this.newsService.requestNews();
-    console.log('received response');
-    console.log(response);
+    // this.selectedItem = response[0];
     this.news = response;
   }
 
@@ -40,11 +40,21 @@ export class NewsFeedComponent implements OnInit {
     return unreadNews.length;
   }
 
-  public onTickerItemClicked(item: NewsItem) {
-    this.selectedItem = (!this.selectedItem || this.selectedItem !== item) ? item : null;
+  public onTickerItemClick(item: NewsItem) {
+    this.selectedItem = (this.selectedItem !== item) ? item : null;
   }
 
-  hasSelectedItem() {
+  onTeaserClick() {
+    this.isLongVersionRequested = !this.isLongVersionRequested;
+    console.log('news feed toggles long version: ' + this.isLongVersionRequested);
+  }
+
+  get showLongVersion(): boolean {
+    return this.isLongVersionRequested;
+  }
+
+  get hasSelectedItem() {
+    // console.log('selected item? ' + (this.selectedItem !== null));
     return this.selectedItem !== null;
   }
 }

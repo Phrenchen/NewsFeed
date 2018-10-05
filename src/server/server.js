@@ -39,8 +39,9 @@ const responseData = [{
 
     // content
     title: 'news title',                      // HTML
-    shortDescription: 'short description',    // HTML
-    longDescription: 'long description'       // HTML
+    shortDescription: '<strong> short description 1</strong>',    // HTML
+    longDescription: 'long description',       // HTML
+    thumbnail: "dist/images/happy_cat.jpg"
   },
   {
     'id': '2',
@@ -55,9 +56,10 @@ const responseData = [{
     sortOrder: 2,
 
     // content
-    title: 'news title',                      // HTML
-    shortDescription: 'short description',    // HTML
-    longDescription: 'long description'       // HTML
+    title: 'news title 2',                      // HTML
+    shortDescription: 'short description 2',    // HTML
+    longDescription: '<div>hi. <a href="https://www.google.de" target="_blank">goog le</a> </div>',       // HTML
+    thumbnail: null
   },
   {
     'id': '3',
@@ -72,8 +74,9 @@ const responseData = [{
     sortOrder: 3,
 
     // content
-    title: 'news title',                      // HTML
-    shortDescription: 'short description',    // HTML
-    longDescription: 'long description'       // HTML
+    title: 'news title 3',                      // HTML
+    shortDescription: 'short description 3',    // HTML
+    longDescription: '<div class="long-description-container"> <h3>Lorem ipsum dolor sit amet</h3> <p>Lorem ipsum dolor sit amet, <a href="https://www.google.de" target="_blank">goog le</a>consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> </div>',
+    thumbnail: null
   }
 ];
