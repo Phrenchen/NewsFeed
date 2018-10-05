@@ -17,11 +17,7 @@ export class DetailsLongComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.news.longDescription);
-    console.log(this.sanitizer.sanitize(SecurityContext.HTML, this.news.longDescription));
-
     document.querySelector('#long-stuff').innerHTML =
       this.sanitizer.sanitize(SecurityContext.HTML, this.news.longDescription);
-
   }
 }
