@@ -1,0 +1,11 @@
+.details-short{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 100%;
+}
+
+.title{
+    font-style: oblique;
+}
