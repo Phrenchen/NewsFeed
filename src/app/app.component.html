@@ -1,3 +1,9 @@
 <div id="hudBar" class="hudBar">
-  <app-news-feed></app-news-feed>
+  <div>
+    <button (click)="onAddNews($event)">add news</button>
+    <button (click)="onDeleteNews($event)">delete selected news</button>
+  </div>
+  <div>
+    <app-news-feed></app-news-feed>
+  </div>
 </div>

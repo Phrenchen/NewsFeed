@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'news-feed';
+
+  onAddNews(e) {
+    console.log('onAddNews');
+  }
+
+  onDeleteNews() {
+    console.log('onDeleteNews');
+  }
 }
