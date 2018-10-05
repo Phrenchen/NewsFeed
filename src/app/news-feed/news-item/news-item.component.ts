@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { INewsItem } from '../model/INewsItem';
+import { NewsItem } from '../model/NewsItem';
 
 @Component({
   selector: 'app-news-item',
@@ -8,7 +8,7 @@ import { INewsItem } from '../model/INewsItem';
 })
 export class NewsItemComponent implements OnInit {
 
-  @Input() item: INewsItem;
+  @Input() item: NewsItem;
 
   constructor() { }
 

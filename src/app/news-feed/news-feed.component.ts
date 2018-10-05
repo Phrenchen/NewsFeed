@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsServiceService } from './news-service.service';
-import { INewsItem } from './model/INewsItem';
+import { NewsItem } from './model/NewsItem';
 
 @Component({
   selector: 'app-news-feed',
@@ -8,9 +8,9 @@ import { INewsItem } from './model/INewsItem';
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
-  private news: INewsItem[] = [];
+  private news: NewsItem[] = [];
 
-  private selectedItem: INewsItem = null;
+  private selectedItem: NewsItem = null;
 
   constructor(private newsService: NewsServiceService) {
     this.getUsers();
@@ -40,7 +40,7 @@ export class NewsFeedComponent implements OnInit {
     return unreadNews.length;
   }
 
-  public onTickerItemClicked(item: INewsItem) {
+  public onTickerItemClicked(item: NewsItem) {
     this.selectedItem = (!this.selectedItem || this.selectedItem !== item) ? item : null;
   }
 

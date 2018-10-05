@@ -9,7 +9,7 @@
  *      - traffic situation at current location (possible?)
  */
 
-export interface INewsItem {
+export interface NewsItem {
     id: number;
     isRead: boolean;
     isFavourite: boolean;

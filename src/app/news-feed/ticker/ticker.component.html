@@ -9,7 +9,14 @@
         class="ticker-item"
         (click)="tickerItemClicked(item)"
       >
+      <app-details-short 
+        [news]=item 
+        [totalNewsCount]=news.length
+      ></app-details-short>
+
+      <!--
         <span class="badge">({{i+1}}/{{news.length}}) {{item.title}}</span> {{item.shortDescription}} <span *ngIf="i<news.length - 1"></span>
+        -->
         </div>
   <!--
   <span>(2/3) [TITLE] Lorem ipsum dolor sit amet.</span> --- 

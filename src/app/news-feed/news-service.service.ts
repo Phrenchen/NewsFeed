@@ -11,7 +11,7 @@ export class NewsServiceService {
   constructor() { }
 
   /**
-   * returns INewsItem[]
+   * returns NewsItem[]
    */
   public requestNews(): Promise<any> {
     return axios.get('http://127.0.0.1:3000/news')
