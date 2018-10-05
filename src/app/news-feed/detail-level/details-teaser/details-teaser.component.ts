@@ -7,13 +7,13 @@ import { NewsItem } from '../../model/NewsItem';
   styleUrls: ['./details-teaser.component.css']
 })
 export class DetailsTeaserComponent implements OnInit {
-  
+
   @Input() news: NewsItem;
-  
+
   @Output() teaserClicked: EventEmitter<NewsItem> = new EventEmitter<NewsItem>();
-  
+
   constructor() { }
-  
+
   ngOnInit() {
   }
 

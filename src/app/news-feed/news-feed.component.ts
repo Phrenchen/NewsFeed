@@ -42,9 +42,10 @@ export class NewsFeedComponent implements OnInit {
 
   public onTickerItemClick(item: NewsItem) {
     this.selectedItem = (this.selectedItem !== item) ? item : null;
+    this.isLongVersionRequested = false;
   }
 
-  onTeaserClick() {
+  onTeaserClick(item) {
     this.isLongVersionRequested = !this.isLongVersionRequested;
     console.log('news feed toggles long version: ' + this.isLongVersionRequested);
   }

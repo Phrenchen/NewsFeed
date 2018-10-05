@@ -17,7 +17,7 @@
 
 <app-details-teaser class="selected-item-details" *ngIf="hasSelectedItem"
   [news]=selectedItem
-  (teaserClicked)="onTeaserClick()">
+  (teaserClicked)="onTeaserClick($event)">
 </app-details-teaser>
 
 <app-details-long *ngIf="showLongVersion"
