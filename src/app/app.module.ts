@@ -8,6 +8,9 @@ import { TickerComponent } from './news-feed/ticker/ticker.component';
 import { FavouriteBubbleComponent } from './news-feed/favourite-bubble/favourite-bubble.component';
 import { NewsListComponent } from './news-feed/news-list/news-list.component';
 import { NewsItemComponent } from './news-feed/news-item/news-item.component';
+import { DetailsShortComponent } from './news-feed/detail-level/details-short/details-short.component';
+import { DetailsTeaserComponent } from './news-feed/detail-level/details-teaser/details-teaser.component';
+import { DetailsLongComponent } from './news-feed/detail-level/details-long/details-long.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { NewsItemComponent } from './news-feed/news-item/news-item.component';
     TickerComponent,
     FavouriteBubbleComponent,
     NewsListComponent,
-    NewsItemComponent
+    NewsItemComponent,
+    DetailsShortComponent,
+    DetailsTeaserComponent,
+    DetailsLongComponent
   ],
   imports: [
     BrowserModule
