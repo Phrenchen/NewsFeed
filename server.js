@@ -48,7 +48,7 @@ const responseData = [{
     title: 'news title',                      // HTML
     shortDescription: '<strong> short description 1</strong>',    // HTML
     longDescription: '<h2>Happy Cat</h2> <img class="teaser-thumbnail" onload="console.log(`script executed! alert!`)" src="dist/images/happy_cat.jpg" alt="cat!" style="width:100%"> <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy </p> <a href="https://giphy.com/explore/happy-cat" target="_blank">happy cats</a> are <ul><li>cute</li><li>happy</li><li>hungry</li></ul>eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>',
-    thumbnail: "dist/images/happy_cat.jpg"
+    thumbnail: "/images/happy_cat.jpg"
   },
   {
     'id': '2',
