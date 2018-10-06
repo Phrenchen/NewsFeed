@@ -1,8 +1,8 @@
 .news-feed{
-    display: flex;
+    display: grid;
     width: 100%;
-    
     background-color: cornsilk;
+    justify-items: center;
 }
 
 /* global positioning of icon. no bubble skinning*/

@@ -9,6 +9,7 @@ import { FavouriteBubbleComponent } from './news-feed/favourite-bubble/favourite
 import { DetailsShortComponent } from './news-feed/detail-level/details-short/details-short.component';
 import { DetailsTeaserComponent } from './news-feed/detail-level/details-teaser/details-teaser.component';
 import { DetailsLongComponent } from './news-feed/detail-level/details-long/details-long.component';
+import { ActionBarComponent } from './news-feed/action-bar/action-bar.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DetailsLongComponent } from './news-feed/detail-level/details-long/deta
     FavouriteBubbleComponent,
     DetailsShortComponent,
     DetailsTeaserComponent,
-    DetailsLongComponent
+    DetailsLongComponent,
+    ActionBarComponent
   ],
   imports: [
     BrowserModule

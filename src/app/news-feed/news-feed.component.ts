@@ -8,7 +8,7 @@ import { NewsItem } from './model/NewsItem';
   styleUrls: ['./news-feed.component.css']
 })
 export class NewsFeedComponent implements OnInit {
-  private news: NewsItem[] = [];
+  public news: NewsItem[] = [];
 
   private selectedItem: NewsItem = null;
   private isLongVersionRequested = false;

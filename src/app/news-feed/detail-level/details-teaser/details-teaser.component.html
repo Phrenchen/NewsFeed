@@ -4,7 +4,7 @@
   - click on teaser -> show long version
 -->
 <div class="card"
-  (click)="onTeaserClick($event)"
+  (click)="onTeaserClick()"
 >
   <img class="teaser-thumbnail" *ngIf="hasThumbnail" src={{thumbnail}} alt="Avatar" style="width:100%">
   <div class="container">

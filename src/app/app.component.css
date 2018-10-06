@@ -8,4 +8,9 @@ body{
 .hudBar{
     /* display: flex; */
     /* flex-direction: row; */
+    overflow: hidden;
+}
+
+.app-head{
+    text-align: center;
 }
