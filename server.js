@@ -5,11 +5,11 @@ var app = express();
 app.use(express.static(__dirname + "/dist/news-feed"));
 
 
-app.get('/', (req, res) => {
+app.get('/*', (req, res) => {
     console.log("get root");
     // res.setHeader('Access-Control-Allow-Origin', '*');
     // res.send('Hello World');
-    res.sendFile(path.join(__dirname+'/dist/news-feed/index.html'));
+    res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
 });
 
 app.get('/news', (req, res) =>{
@@ -24,8 +24,8 @@ app.post('/news', (req, res) =>{
 });
 
 const port = 8080;
-
-app.listen(port, () => {
+// app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || port, () => {
     console.log(`-> listening on port ${port}`);
 });
 
