@@ -26,7 +26,7 @@ app.post('/news', (req, res) =>{
 const port = 8080;
 
 app.listen(port, () => {
-    console.log(`listening on port ${port}`);
+    console.log(`-> listening on port ${port}`);
 });
 
 // static news feed 
