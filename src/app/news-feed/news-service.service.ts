@@ -17,7 +17,7 @@ export class NewsServiceService {
     console.log('requesting news');
     return axios.get('/news')
     .then((response: AxiosResponse<any>) => {
-        console.log('received news: ' + response.data['length']);
+        console.log('received news');
         return response.data;
 
       })
