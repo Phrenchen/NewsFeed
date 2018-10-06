@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsServiceService } from './news-service.service';
+import { NewsService } from './news.service';
 import { NewsItem } from './model/NewsItem';
 
 @Component({
@@ -13,7 +13,7 @@ export class NewsFeedComponent implements OnInit {
   private selectedItem: NewsItem = null;
   private isLongVersionRequested = false;
 
-  constructor(private newsService: NewsServiceService) {
+  constructor(private newsService: NewsService) {
     this.getUsers();
   }
 

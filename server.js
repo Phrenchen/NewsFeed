@@ -6,15 +6,14 @@ app.use(express.static(__dirname + "/dist/news-feed"));
 
 
 app.get('/', (req, res) => {
-    console.log("get root");
-    // res.setHeader('Access-Control-Allow-Origin', '*');
-    // res.send('Hello World');
+    console.log("get roo  t"); 
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
 });
 
 app.get('/news', (req, res) =>{
     console.log("providing news");
-    // res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(responseData);
 });
 
@@ -25,8 +24,8 @@ app.get('/news', (req, res) =>{
 });
 */
 
-const port = 8080;
-// app.listen(process.env.PORT || 8080);
+const port = 4202;
+
 app.listen(process.env.PORT || port, () => {
     console.log(`-> listening on port ${port}`);
 });

@@ -1,7 +1,18 @@
 <div class="app-head">
   <h1>news list. with 3 view states (short, teaser, long)</h1>
 </div>
-<div id="hudBar" class="hudBar">
-  <app-action-bar></app-action-bar>
-  <app-news-feed></app-news-feed>
+
+<div *ngIf="!user" id="okta-login-container"></div>
+<div *ngIf="user">
+  Hello {{user}}
+  <button (click)="logout()">Logout</button>
+  
+  <!-- content for logged in users -->
+  <!--
+  -->
 </div>
+        <div id="hudBar" class="hudBar">
+          <app-action-bar></app-action-bar>
+          <app-news-feed></app-news-feed>
+          <app-ticker></app-ticker>
+        </div>

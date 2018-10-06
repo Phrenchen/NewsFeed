@@ -4,7 +4,7 @@ import axios, { AxiosResponse } from 'axios';
 @Injectable({
   providedIn: 'root'
 })
-export class NewsServiceService {
+export class NewsService {
 
   @Output() newsUpdate = new EventEmitter< string >();
 
