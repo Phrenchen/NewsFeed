@@ -14,8 +14,10 @@ export class NewsServiceService {
    * returns NewsItem[]
    */
   public requestNews(): Promise<any> {
+    console.log('requesting news');
     return axios.get('http://127.0.0.1:3000/news')
-      .then((response: AxiosResponse<any>) => {
+    .then((response: AxiosResponse<any>) => {
+        console.log('received news: ' + response.data['length']);
         return response.data;
 
       })
