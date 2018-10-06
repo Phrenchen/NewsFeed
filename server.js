@@ -1,10 +1,15 @@
 var express = require('express');
+const path = require('path');
 var app = express();
  
+app.use(express.static(__dirname + "/dist/news-feed"));
+
+
 app.get('/', (req, res) => {
     console.log("get root");
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send('Hello World');
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.send('Hello World');
+    res.sendFile(path.join(__dirname+'/dist/news-feed/index.html'));
 });
 
 app.get('/news', (req, res) =>{
