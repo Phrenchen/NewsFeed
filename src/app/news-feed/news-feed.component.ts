@@ -23,7 +23,13 @@ export class NewsFeedComponent implements OnInit {
   private async getUsers() {
     const response = await this.newsService.requestNews();
     // this.selectedItem = response[0];
-    this.news = response;
+    console.log('got users');
+    try {
+      this.news = response;
+    } catch (e) {
+      console.log('failed assigning response to news array');
+      this.news = [];
+    }
   }
 
   public getUnreadFavouriteCount() {
