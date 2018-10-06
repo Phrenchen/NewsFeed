@@ -13,6 +13,7 @@ app.get('/*', (req, res) => {
 });
 
 app.get('/news', (req, res) =>{
+    console.log("providing news");
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(responseData);
 });
