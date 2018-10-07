@@ -24,7 +24,7 @@ app.get('/news', (req, res) =>{
 });
 */
 
-const port = 4202;
+const port = 4200;
 
 app.listen(process.env.PORT || port, () => {
     console.log(`-> listening on port ${port}`);
