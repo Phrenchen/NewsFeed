@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewsFeedComponent } from './news-feed.component';
-import { OktaService } from './../shared/okta/okta.service';
 
 describe('NewsFeedComponent', () => {
   let component: NewsFeedComponent;
@@ -8,8 +7,7 @@ describe('NewsFeedComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewsFeedComponent ],
-      providers: [OktaService]
+      declarations: [ NewsFeedComponent ]
     })
     .compileComponents();
   }));
