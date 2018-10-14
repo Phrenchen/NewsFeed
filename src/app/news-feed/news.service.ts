@@ -15,8 +15,11 @@ export class NewsService {
    * returns NewsItem[]
    */
   public requestNews(): Promise<any> {
-    console.log('requesting news');
-    return axios.get('http://localhost:8080/api/news')
+    const endpoint = (location.hostname === 'localhost' || location.hostname === '127.0.0.1') 
+      ? 'http://localhost:8080/api/news'
+      : 'api/news';
+    console.log('requesting news: ' + endpoint);
+    return axios.get(endpoint)
     // return axios.get('/api/news')
     .then((response: AxiosResponse<any>) => {
         console.log('received news');
