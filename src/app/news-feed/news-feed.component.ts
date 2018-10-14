@@ -53,7 +53,6 @@ export class NewsFeedComponent implements OnInit {
 
   onTeaserClick(item) {
     this.isLongVersionRequested = !this.isLongVersionRequested;
-    console.log('news feed toggles long version: ' + this.isLongVersionRequested);
   }
 
   get showLongVersion(): boolean {

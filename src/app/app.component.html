@@ -3,7 +3,10 @@
 </div>
 
         <div id="hudBar" class="hudBar">
-          <app-action-bar></app-action-bar>
+          <app-action-bar
+            (actionSelected)="onActionSelected($event)"
+          ></app-action-bar>
           <app-news-feed></app-news-feed>
           <app-ticker></app-ticker>
         </div>
+ 

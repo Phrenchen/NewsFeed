@@ -1,30 +1,76 @@
 var express = require('express');
 const path = require('path');
 var app = express();
- 
+
 app.use(express.static(__dirname + "/dist/news-feed"));
 
-
 app.get('/', (req, res) => {
-    console.log("get roo  t"); 
+    console.log("get root"); 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
 });
 
-app.get('/news', (req, res) =>{
+app.get('/api/news', (req, res) =>{
     console.log("providing news");
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(responseData);
 });
 
-/*app.post('/news', (req, res) =>{
-    console.log("post news");
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send("response post /news");
-});
-*/
+// add news
+const maxNewsCount = 1000;
+const exampleMatch = {
+    id: '-1',
+    isRead: false,
+    isFavourite: true,
 
-const port = 4200;
+    // content meta
+    dateCreated: null,
+    dateUpdated: null,
+    dateRead: null,
+    seoDescritpion: '',
+    sortOrder: -1,
+
+    // content
+    title: '',                      // HTML
+    shortDescription: '',    // HTML
+    longDescription: '',
+    thumbnail: ''
+    };
+
+// app.post('api/news', (req, res) =>{
+//     console.log("post news: " + req.body);
+//     addNews(req.body);
+//     res.setHeader('Access-Control-Allow-Origin', '*');
+//     res.send(responseData);
+// });
+
+const addNews = (newsRequest) => {
+    console.log("adding news: " + newsRequest);
+    if(responseData.length >= maxNewsCount){
+        // remove oldest news
+        console.log('remove oldest news');
+        responseData.shift();
+        console.log(responseData.length);
+    }
+
+    if(isValid(newsRequest)){
+        responseData.push(newsRequest);
+    }
+}
+
+const isValid = (candidate) =>{
+    for (let property in exampleMatch) {
+        if (!candidate.hasOwnProperty(property)) {
+            console.log("invalid news item. missing property: " + property); 
+        }
+    }
+
+
+}
+
+
+// listen
+const port = 8080;
 
 app.listen(process.env.PORT || port, () => {
     console.log(`-> listening on port ${port}`);
@@ -32,9 +78,9 @@ app.listen(process.env.PORT || port, () => {
 
 // static news feed 
 const responseData = [{
-    'id': '1',
-    'isRead': false,
-    'isFavourite': true,
+    id: '1',
+    isRead: false,
+    isFavourite: true,
 
     // content meta
     dateCreated: new Date(),
@@ -50,9 +96,9 @@ const responseData = [{
     thumbnail: "/assets/images/happy_cat.jpg"
   },
   {
-    'id': '2',
-    'isRead': false,
-    'isFavourite': false,
+    id: '2',
+    isRead: false,
+    isFavourite: false,
 
     // content meta
     dateCreated: new Date(),
@@ -68,9 +114,9 @@ const responseData = [{
     thumbnail: null
   },
   {
-    'id': '3',
-    'isRead': true,
-    'isFavourite': false,
+    id: '3',
+    isRead: true,
+    isFavourite: false,
 
     // content meta
     dateCreated: new Date(),

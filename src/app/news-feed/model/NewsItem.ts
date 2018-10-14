@@ -21,7 +21,7 @@ export interface NewsItem {
     dateEnd: Date;          // this date
 
     dateRead: Date;
-    seoDescritpion: string;
+    seoDescription: string;
     sortOrder: string;
 
     // content
