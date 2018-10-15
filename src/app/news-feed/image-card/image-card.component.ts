@@ -8,7 +8,7 @@ import { Image } from '../model/Image';
 })
 export class ImageCardComponent implements OnInit {
 
-  @Input() image: Image[];
+  @Input() image: Image;
 
   constructor() { }
 
