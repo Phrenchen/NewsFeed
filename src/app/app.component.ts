@@ -1,6 +1,8 @@
-import { Component, enableProdMode, ChangeDetectorRef, OnInit } from '@angular/core';
+import { Component, enableProdMode, ChangeDetectorRef, OnInit, Output } from '@angular/core';
 import { NewsFeedConsts } from './news-feed/model/NewsFeedConsts';
-import { NewsService } from './news-feed/news.service';
+import { NewsService } from './news-feed/services/news.service';
+import { ImageService } from './news-feed/services/photo.service';
+import { Image } from './news-feed/model/Image';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +10,35 @@ import { NewsService } from './news-feed/news.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'news-feed';
-  user;
+  private title = 'news-feed';
 
 
-  constructor(private newsService: NewsService) {
+  public images: Image[];
+
+  constructor(private newsService: NewsService,
+    private imageService: ImageService) {
     // enableProdMode();
+
+    setTimeout(this.getImages, 1000);
+    // this.getImages();
+
   }
 
   ngOnInit() {
+
   }
+
+  private getImages = () => {
+    console.log('requesting images');
+    const imageCount = 10;
+    this.imageService.requestImages(imageCount)
+      .then(result => {
+        console.log('getImages: image count: ' + result.length);
+        this.images = result;
+      });
+
+  }
+
 
   onActionSelected(action) {
     console.log('on action selected: ' + action);

@@ -1,12 +1,15 @@
 <div class="app-head">
-  <h1>news list. with 3 view states (short, teaser, long)</h1>
+  <h1>lists of things</h1>
 </div>
 
         <div id="hudBar" class="hudBar">
-          <app-action-bar
+          <!-- <app-action-bar
             (actionSelected)="onActionSelected($event)"
-          ></app-action-bar>
-          <app-news-feed></app-news-feed>
-          <app-ticker></app-ticker>
+          ></app-action-bar> -->
+          <!-- <app-news-feed></app-news-feed> -->
+          <!-- <app-ticker></app-ticker> -->
         </div>
+        <app-image-card-list
+          [images]="images"
+        ></app-image-card-list>
  

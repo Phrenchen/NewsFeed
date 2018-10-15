@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from './news.service';
+import { NewsService } from './services/news.service';
 import { NewsItem } from './model/NewsItem';
+import { ImageService } from './services/photo.service';
 
 @Component({
   selector: 'app-news-feed',
   templateUrl: './news-feed.component.html',
   styleUrls: ['./news-feed.component.css']
 })
+
+/**
+ * component gets it´s own data...good idea? pass it in. <- TODO!
+ */
 export class NewsFeedComponent implements OnInit {
   public news: NewsItem[] = [];
 
@@ -14,16 +19,16 @@ export class NewsFeedComponent implements OnInit {
   private isLongVersionRequested = false;
 
   constructor(private newsService: NewsService) {
-    this.getUsers();
+    this.getNews();
   }
 
   ngOnInit() {
   }
 
-  private async getUsers() {
+  private async getNews() {
     const response = await this.newsService.requestNews();
     // this.selectedItem = response[0];
-    console.log('got users');
+    console.log('got news');
     try {
       this.news = response;
     } catch (e) {

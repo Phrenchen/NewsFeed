@@ -1,6 +1,6 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
-import axios, { AxiosResponse } from 'axios';
-import { NewsItem } from './model/NewsItem';
+import { Injectable } from '@angular/core';
+import Axios, { AxiosResponse } from 'axios';
+import { NewsItem } from '../model/NewsItem';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,6 @@ export class NewsService {
 
   public static NEWS = 'news';
 
-  @Output() newsUpdate = new EventEmitter< string >();
 
   public static getEndPointBase(): string {
     return (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
@@ -28,8 +27,8 @@ export class NewsService {
 
     console.log('requesting news: ' + endpoint);
 
-    return axios.get(endpoint)
-    .then((response: AxiosResponse<any>) => {
+    return Axios.get(endpoint)
+      .then((response: AxiosResponse<any>) => {
         console.log('received news');
         return response.data;
 
@@ -41,9 +40,10 @@ export class NewsService {
   }
 
   public addNews(title: string, shortDescription: string) {
+    const endpoint = NewsService.getEndPointBase() + NewsService.NEWS;
     const newsItem = this.createNewsItem(title, shortDescription);
 
-    axios.post('/api/news', newsItem)
+    Axios.post(endpoint, newsItem)
       .then( (response: AxiosResponse<any>) => {
         console.log('response after creating news: ' + response);
         return response;
