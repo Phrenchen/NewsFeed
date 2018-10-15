@@ -10,10 +10,11 @@ import { Image } from './news-feed/model/Image';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  public images: Image[];
+  
+  private imageCount = 30;
   private title = 'news-feed';
 
-
-  public images: Image[];
 
   constructor(private newsService: NewsService,
     private imageService: ImageService) {
@@ -29,12 +30,9 @@ export class AppComponent implements OnInit {
   }
 
   private getImages = () => {
-    console.log('requesting images');
-    const imageCount = 10;
-    this.imageService.requestImages(imageCount)
+    this.imageService.requestImages(this.imageCount)
       .then(result => {
-        console.log('getImages: image count: ' + result.length);
-        this.images = result;
+        this.images = (result as Array<Image>).slice(0, this.imageCount);
       });
 
   }

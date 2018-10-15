@@ -1,8 +1,9 @@
-<div *ngFor="let image of images; index as i">
-  <div *ngIf="i < imagesPerPage">
-    <!-- <h1>{{image.title}}</h1> -->
-    <app-image-card
-      [image]="image"
-    ></app-image-card>
+<div class="image-list-grid">
+  <div  *ngFor="let image of images; index as i">
+    <!-- <app-image-card *ngIf="i < imagesPerPage" -->
+    <app-image-card 
+        [image]="image"
+      >
+    </app-image-card>
   </div>
 </div>
