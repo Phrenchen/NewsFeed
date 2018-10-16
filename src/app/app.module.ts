@@ -14,6 +14,7 @@ import { NewsService } from './news-feed/services/news.service';
 import { ImageService } from './news-feed/services/photo.service';
 import { ImageCardComponent } from './news-feed/image-card/image-card.component';
 import { ImageCardListComponent } from './news-feed/image-card-list/image-card-list.component';
+import { ContextMenuComponent } from './context-menu/context-menu.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ImageCardListComponent } from './news-feed/image-card-list/image-card-l
     DetailsLongComponent,
     ActionBarComponent,
     ImageCardComponent,
-    ImageCardListComponent
+    ImageCardListComponent,
+    ContextMenuComponent
   ],
   imports: [
     BrowserModule
