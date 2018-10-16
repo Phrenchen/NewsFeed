@@ -2,14 +2,22 @@
   <h1>lists of things</h1>
 </div>
 
-        <div id="hudBar" class="hudBar">
-          <!-- <app-action-bar
-            (actionSelected)="onActionSelected($event)"
-          ></app-action-bar> -->
-          <!-- <app-news-feed></app-news-feed> -->
+  <div id="container">
+    <div id="hudBar" class="hudBar">
+    </div>
+    
+    <app-action-bar id="action-bar"
+      (actionSelected)="onActionSelected($event)"
+    ></app-action-bar>
+    
+    <app-news-feed id="news-feed"></app-news-feed>
+
+    <app-image-card-list id="image-card-list"
+    [images]="images"
+    ></app-image-card-list>
+    
+
+  </div>
+
           <!-- <app-ticker></app-ticker> -->
-        </div>
-        <app-image-card-list
-          [images]="images"
-        ></app-image-card-list>
  
