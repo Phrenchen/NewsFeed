@@ -41,7 +41,12 @@ export class AppComponent implements OnInit {
   public contextMenuTargetSelected(contextAction: ContextActionTarget) {
     switch (contextAction.action) {
       case 'delete':
-        contextAction.target.style.display = 'none';
+        if (contextAction.target.tagName === 'IMG') {
+          contextAction.target.style.display = 'none';
+        } else {
+          console.log('can only delete images. ignoring: ' + contextAction.target.tagName);
+          console.log(contextAction.target.tagName);
+        }
     }
   }
 

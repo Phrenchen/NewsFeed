@@ -13,8 +13,8 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
   private actions = ['food', 'guard', 'enemy'];
 
   public actionDeleteEnabled = true;
-  public actionCloneEnabled = true;
-  public actionMarkEnabled = true;
+  public actionCloneEnabled = false;
+  public actionMarkEnabled = false;
   public selectedTarget: HTMLElement;
 
   constructor() { }
@@ -31,17 +31,23 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    document.querySelector('#action-delete').addEventListener('mouseup' , (e) => {
-      this.emitAction(this.selectedTarget, 'delete');
-    });
+    if (document.querySelector('#action-delete')) {
+      document.querySelector('#action-delete').addEventListener('mouseup' , (e) => {
+        this.emitAction(this.selectedTarget, 'delete');
+      });
+    }
 
-    document.querySelector('#action-clone').addEventListener('mouseup' , (e) => {
-      this.emitAction(this.selectedTarget, 'clone');
-    });
+    if (document.querySelector('#action-clone')) {
+      document.querySelector('#action-clone').addEventListener('mouseup' , (e) => {
+        this.emitAction(this.selectedTarget, 'clone');
+      });
+    }
 
-    document.querySelector('#action-mark').addEventListener('mouseup' , (e) => {
-      this.emitAction(this.selectedTarget, 'mark');
-    });
+    if (document.querySelector('#action-mark')) {
+      document.querySelector('#action-mark').addEventListener('mouseup' , (e) => {
+        this.emitAction(this.selectedTarget, 'mark');
+      });
+    }
 
     window.onmousedown = e => {
       // console.log(e.target);
@@ -58,39 +64,8 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
     this.showmenu(false);   // initially hide menu
   }
 
-  private getClickTarget(e: MouseEvent): any {
-    /* search path for
-        app-image-card
-        app-details-short
-        app-details-long
-        app-details-teaser
-    */
-    const searchFor = [
-      'app-image-card',
-       'app-details-short',
-       'app-details-long',
-       'app-details-teaser'
-    ];
-
-    const path: Array<any> = e['path'];   // e.path not public? e.path gives erroR :/
-    // console.log(path ? 'length: ' + path.length : 'no path');
-
-    // path.map( candidate => {
-    //   console.log(candidate);
-    // });
-  }
-
   private isValidAction(action): boolean {
       return this.actions.indexOf(action) !== -1;
-  }
-
-  private triggerMenuAction(target) {
-      const actionName = target.innerHTML.trim();
-      console.log('action: ' + actionName);
-      if (this.isValidAction(actionName)) {
-          console.log('triggering menu action for: ' + actionName);
-          // handle selected action
-      }
   }
 
   private get menu() {
