@@ -47,6 +47,10 @@ export class AppComponent implements OnInit {
           console.log('can only delete images. ignoring: ' + contextAction.target.tagName);
           console.log(contextAction.target.tagName);
         }
+        break;
+      case 'clone':
+        const clone = contextAction.target.cloneNode(true);
+        contextAction.target.parentNode.appendChild(clone);
     }
   }
 
@@ -54,7 +58,7 @@ export class AppComponent implements OnInit {
     console.log('on action selected: ' + action);
     switch (action) {
       case NewsFeedConsts.ADD_NEWS:
-      this.newsService.addNews('random new title', 'random short description');
+        this.newsService.addNews('random new title', 'random short description');
         break;
       default: console.log('undefined action: ' + action);
     }

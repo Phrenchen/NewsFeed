@@ -13,9 +13,12 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
   private actions = ['food', 'guard', 'enemy'];
 
   public actionDeleteEnabled = true;
-  public actionCloneEnabled = false;
+  public actionCloneEnabled = true;
   public actionMarkEnabled = false;
   public selectedTarget: HTMLElement;
+
+  private showDelayTimeout = -1;
+  private showDelay = 660;    // 660 delay from mouseDown to showMenu
 
   constructor() { }
 
@@ -52,13 +55,31 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
     window.onmousedown = e => {
       // console.log(e.target);
       this.selectedTarget = e.target as HTMLElement;
-      this.showmenu(true);
+
+      // toggle buttons depending on target type.
+      this.actionDeleteEnabled = this.selectedTarget.tagName ===  'IMG';
+
+      // show menu after a small delay, enabling "normal-duration-mouse-downs" to count as clicks
+      // save timeoutId to cancel the call onMouseUp
+      this.showDelayTimeout = window.setTimeout(() => {
+        this.showmenu(true);
+      }, this.showDelay);
       this.updateActionMenuPosition(e.clientX, e.clientY);
     };
 
     window.onmouseup = e => {
       // always hide menu on mouseUp?
+      if (this.showDelayTimeout !== -1) {
+        window.clearTimeout(this.showDelayTimeout);
+        this.showDelayTimeout = -1;
+      }
       this.showmenu(false);
+    };
+
+    window.onmousemove = e => {
+      if (this.menu.style.display === 'none') {
+        this.updateActionMenuPosition(e.clientX, e.clientY);
+      }
     };
 
     this.showmenu(false);   // initially hide menu
@@ -80,8 +101,10 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
 
   private updateActionMenuPosition(x: number, y: number) {
         if (this.menu) {
-            const finalX = (x - this.menu.offsetWidth * .5);
-            const finalY = (y - this.menu.offsetHeight * .5);
+            const xOffset = Math.max(document.documentElement.scrollLeft, document.body.scrollLeft);
+            const yOffset = Math.max(document.documentElement.scrollTop, document.body.scrollTop);
+            const finalX = (x - this.menu.offsetWidth * .5) + xOffset;
+            const finalY = (y - this.menu.offsetHeight * .5) + yOffset;
 
             this.menu.style.left = finalX + 'px';
             this.menu.style.top = finalY + 'px';
