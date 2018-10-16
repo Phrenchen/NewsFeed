@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import ContextActionTarget from './ContextActionTarget';
 
 @Component({
   selector: 'app-context-menu',
@@ -86,7 +87,7 @@ export class ContextMenuComponent implements OnInit, AfterViewInit {
   private triggerMenuAction(target) {
       const actionName = target.innerHTML.trim();
       console.log('action: ' + actionName);
-      if(this.isValidAction(actionName)) {
+      if (this.isValidAction(actionName)) {
           console.log('triggering menu action for: ' + actionName);
           // handle selected action
       }
