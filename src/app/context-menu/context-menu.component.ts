@@ -1,43 +1,59 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-context-menu',
   templateUrl: './context-menu.component.html',
   styleUrls: ['./context-menu.component.css']
 })
-export class ContextMenuComponent implements OnInit {
+export class ContextMenuComponent implements OnInit, AfterViewInit {
 
-  @Output() targetSelected: EventEmitter<any> = new EventEmitter<any>();
+  @Output() targetSelected: EventEmitter<ContextActionTarget> = new EventEmitter<ContextActionTarget>();
 
   private actions = ['food', 'guard', 'enemy'];
 
-  private actionDeleteEnabled = true;
-  private actionCloneEnabled = true;
-  private actionMarkEnabled = true;
+  public actionDeleteEnabled = true;
+  public actionCloneEnabled = true;
+  public actionMarkEnabled = true;
+  public selectedTarget: HTMLElement;
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+
+  }
+
+  private emitAction(target: HTMLElement, action: string): void {
+    this.targetSelected.emit({
+      target: target,
+      action: action
+    });
+  }
+
+  ngAfterViewInit() {
+    document.querySelector('#action-delete').addEventListener('mouseup' , (e) => {
+      this.emitAction(this.selectedTarget, 'delete');
+    });
+
+    document.querySelector('#action-clone').addEventListener('mouseup' , (e) => {
+      this.emitAction(this.selectedTarget, 'clone');
+    });
+
+    document.querySelector('#action-mark').addEventListener('mouseup' , (e) => {
+      this.emitAction(this.selectedTarget, 'mark');
+    });
 
     window.onmousedown = e => {
-      console.log(e);
-      const target = this.getClickTarget(e);
-      this.showmenu(true, e.target);
+      // console.log(e.target);
+      this.selectedTarget = e.target as HTMLElement;
+      this.showmenu(true);
       this.updateActionMenuPosition(e.clientX, e.clientY);
     };
 
     window.onmouseup = e => {
-      this.triggerMenuAction(e.target);
-
-      // always hide menu?
+      // always hide menu on mouseUp?
       this.showmenu(false);
     };
 
-    // window.onmousemove = e => {
-      //   if (this.mouseIsDown) {
-        //       // this.updateActionMenuPosition(e.clientX, e.clientY);
-        //   }
-        // };
     this.showmenu(false);   // initially hide menu
   }
 
@@ -56,12 +72,11 @@ export class ContextMenuComponent implements OnInit {
     ];
 
     const path: Array<any> = e['path'];   // e.path not public? e.path gives erroR :/
-    console.log(path ? 'length: ' + path.length : 'no path');
+    // console.log(path ? 'length: ' + path.length : 'no path');
 
     // path.map( candidate => {
     //   console.log(candidate);
     // });
-
   }
 
   private isValidAction(action): boolean {
@@ -70,7 +85,7 @@ export class ContextMenuComponent implements OnInit {
 
   private triggerMenuAction(target) {
       const actionName = target.innerHTML.trim();
-
+      console.log('action: ' + actionName);
       if(this.isValidAction(actionName)) {
           console.log('triggering menu action for: ' + actionName);
           // handle selected action
@@ -81,14 +96,8 @@ export class ContextMenuComponent implements OnInit {
     return document.querySelector('#actionmenu') as HTMLDivElement;
   }
 
-  private showmenu(mouseIsDown, target = null) {
+  private showmenu(mouseIsDown) {
     if (this.menu) {
-      // check if valid target (with enabled actions) is clicked
-      if (mouseIsDown) {
-        console.log(target);
-
-      }
-
       this.menu.style.display = mouseIsDown ? 'grid' : 'none';
     }
   }

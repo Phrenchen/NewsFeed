@@ -3,6 +3,7 @@ import { NewsFeedConsts } from './news-feed/model/NewsFeedConsts';
 import { NewsService } from './news-feed/services/news.service';
 import { ImageService } from './news-feed/services/photo.service';
 import { Image } from './news-feed/model/Image';
+import ContextActionTarget from './context-menu/ContextActionTarget';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ import { Image } from './news-feed/model/Image';
 })
 export class AppComponent implements OnInit {
   public images: Image[];
-  
+
   private imageCount = 30;
   private title = 'news-feed';
 
@@ -37,6 +38,12 @@ export class AppComponent implements OnInit {
 
   }
 
+  public contextMenuTargetSelected(contextAction: ContextActionTarget) {
+    switch (contextAction.action) {
+      case 'delete':
+        contextAction.target.style.display = 'none';
+    }
+  }
 
   onActionSelected(action) {
     console.log('on action selected: ' + action);
