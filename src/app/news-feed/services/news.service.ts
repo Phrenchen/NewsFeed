@@ -25,11 +25,8 @@ export class NewsService {
   public requestNews(): Promise<any> {
     const endpoint = NewsService.getEndPointBase() + NewsService.NEWS;
 
-    console.log('requesting news: ' + endpoint);
-
     return Axios.get(endpoint)
       .then((response: AxiosResponse<any>) => {
-        console.log('received news');
         return response.data;
 
       })

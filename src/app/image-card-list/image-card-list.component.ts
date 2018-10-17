@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Image } from '../model/Image';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Image } from '../image-card/Image';
 
 @Component({
   selector: 'app-image-card-list',
@@ -9,6 +9,8 @@ import { Image } from '../model/Image';
 export class ImageCardListComponent implements OnInit {
 
   @Input() images: Image[] = [];
+
+  @Output() imageSelected: EventEmitter<Component> = new EventEmitter<Component>();
 
   public imagesPerPage = 4;
 
@@ -21,4 +23,9 @@ export class ImageCardListComponent implements OnInit {
     console.log('image count: ' + this.images.length);
   }
 
+  public cardSeleced(comp: Component): void {
+    console.log(comp);
+    this.imageSelected.emit(comp);
+
+  }
 }

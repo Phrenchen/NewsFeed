@@ -27,8 +27,7 @@ export class NewsFeedComponent implements OnInit {
 
   private async getNews() {
     const response = await this.newsService.requestNews();
-    // this.selectedItem = response[0];
-    console.log('got news');
+
     try {
       this.news = response;
     } catch (e) {

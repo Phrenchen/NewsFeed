@@ -1,9 +1,10 @@
-import { Component, enableProdMode, ChangeDetectorRef, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NewsFeedConsts } from './news-feed/model/NewsFeedConsts';
 import { NewsService } from './news-feed/services/news.service';
 import { ImageService } from './news-feed/services/photo.service';
-import { Image } from './news-feed/model/Image';
+import { Image } from './image-card/Image';
 import ContextActionTarget from './context-menu/ContextActionTarget';
+import ContextMenuConsts from './context-menu/ContextMenuConsts';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,13 @@ export class AppComponent implements OnInit {
 
   private imageCount = 30;
   private title = 'news-feed';
+
+  // tagName is passed to context menu ('app-details-short', 'app-details-long',...)
+  public selectedTarget: ContextActionTarget = {
+    tagName: '',
+    action: '',
+    component: null
+  };
 
 
   constructor(private newsService: NewsService,
@@ -38,29 +46,30 @@ export class AppComponent implements OnInit {
 
   }
 
-  public contextMenuTargetSelected(contextAction: ContextActionTarget) {
-    switch (contextAction.action) {
-      case 'delete':
-        if (contextAction.target.tagName === 'IMG') {
-          contextAction.target.style.display = 'none';
-        } else {
-          console.log('can only delete images. ignoring: ' + contextAction.target.tagName);
-          console.log(contextAction.target.tagName);
-        }
-        break;
-      case 'clone':
-        const clone = contextAction.target.cloneNode(true);
-        contextAction.target.parentNode.appendChild(clone);
-    }
-  }
-
-  onActionSelected(action) {
+  contextActionSelected(action) {
     console.log('on action selected: ' + action);
+
     switch (action) {
-      case NewsFeedConsts.ADD_NEWS:
-        this.newsService.addNews('random new title', 'random short description');
+      case ContextMenuConsts.ACTION_DELETE:
+      case ContextMenuConsts.ACTION_CLONE:
+      case ContextMenuConsts.ACTION_MARK:
+        console.log('context action selected: ' + action);
+        this.selectedTarget.action = action;
         break;
       default: console.log('undefined action: ' + action);
     }
+
+    console.log(this.selectedTarget);
+  }
+
+  public componentSelected(comp: Component) {
+    console.log(comp);
+
+    this.target = comp;
+  }
+
+  public set target(targetComponent: Component) {
+    this.selectedTarget.component = targetComponent;
+    console.log(this.selectedTarget);
   }
 }

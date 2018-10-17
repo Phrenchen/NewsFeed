@@ -7,7 +7,7 @@
     <div id="hudBar" class="hudBar">
     </div>
     <app-context-menu
-      (targetSelected)="contextMenuTargetSelected($event)"
+      (actionSelected)="contextActionSelected($event)"
     ></app-context-menu>
     
     <!-- <app-action-bar id="action-bar"
@@ -18,6 +18,7 @@
 
     <app-image-card-list id="image-card-list"
     [images]="images"
+    (imageSelected)="componentSelected($event)"
     ></app-image-card-list>
 
   </div>

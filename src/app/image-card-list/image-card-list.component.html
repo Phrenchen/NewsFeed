@@ -3,6 +3,7 @@
     <!-- <app-image-card *ngIf="i < imagesPerPage" -->
     <app-image-card 
         [image]="image"
+        (selected)="cardSeleced($event)"
       >
     </app-image-card>
   </div>

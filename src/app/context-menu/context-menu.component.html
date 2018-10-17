@@ -1,15 +1,15 @@
 <div class="actionmenu_grid" id="actionmenu">
-  <button *ngIf="actionDeleteEnabled"
+  <button *ngIf="isActionEnabled('delete')"
     id='action-delete'
     class="actionmenu_button actionmenu_button_delete">
       delete image
   </button>
-  <button *ngIf="actionCloneEnabled"
+  <button *ngIf="isActionEnabled('clone')"
     id='action-clone'
     class="actionmenu_button actionmenu_button_clone">
       clone it!
   </button>
-  <button *ngIf="actionMarkEnabled"
+  <button *ngIf="isActionEnabled('mark')"
     id='action-mark'
     class="actionmenu_button actionmenu_button_mark">
       mark

@@ -1,4 +1,7 @@
+import { Component } from '@angular/core';
+
 export default interface ContextActionTarget {
-    target: HTMLElement;
+    tagName: string;
     action: string;
+    component: Component;
 }
