@@ -14,3 +14,7 @@ span{
     padding-left: 10px;
     padding-right: 10px;
 }
+
+img{
+    user-select: none;
+}

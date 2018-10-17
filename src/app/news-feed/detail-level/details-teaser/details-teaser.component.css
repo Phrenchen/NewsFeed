@@ -9,3 +9,7 @@
 .teaser-thumbnail{
     max-width: 100px;
 }
+
+img{
+    user-select: none;
+}

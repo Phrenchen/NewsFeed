@@ -5,13 +5,12 @@ var app = express();
 app.use(express.static(__dirname + "/dist/news-feed"));
 
 app.get('/', (req, res) => {
-    console.log("get root"); 
+    // console.log("get root"); 
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
 });
 
 app.get('/api/news', (req, res) =>{
-    console.log("providing news");
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(responseData);
 });
@@ -92,7 +91,7 @@ const responseData = [{
     // content
     title: 'news title',                      // HTML
     shortDescription: '<strong> short description 1</strong>',    // HTML
-    longDescription: '<h2>Happy Cat</h2> <img class="teaser-thumbnail" onload="console.log(`script executed! alert!`)" src="assets/images/happy_cat.jpg" alt="cat!" style="width:100%"> <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy </p> <a href="https://giphy.com/explore/happy-cat" target="_blank">happy cats</a> are <ul><li>cute</li><li>happy</li><li>hungry</li></ul>eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>',
+    longDescription: '<h2>Happy Cat</h2> <img draggable="false" onload="console.log(`script executed! alert!`)" src="assets/images/happy_cat.jpg" alt="cat!" style="width:100%; user-select:none;"> <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy </p> <a href="https://giphy.com/explore/happy-cat" target="_blank">happy cats</a> are <ul><li>cute</li><li>happy</li><li>hungry</li></ul>eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>',
     thumbnail: "/assets/images/happy_cat.jpg"
   },
   {

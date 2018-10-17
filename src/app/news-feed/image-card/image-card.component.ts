@@ -13,7 +13,6 @@ export class ImageCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('image card component: ' + this.image);
   }
 
 }
