@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NewsFeedConsts } from './news-feed/model/NewsFeedConsts';
 import { NewsService } from './news-feed/services/news.service';
 import { ImageService } from './news-feed/services/photo.service';
-import { Image } from './image-card/Image';
+// import { Image } from './image-card/Image';
 import ContextActionTarget from './context-menu/ContextActionTarget';
 import ContextMenuConsts from './context-menu/ContextMenuConsts';
 
@@ -12,9 +12,7 @@ import ContextMenuConsts from './context-menu/ContextMenuConsts';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  public images: Image[];
 
-  private imageCount = 30;
   private title = 'news-feed';
 
   // tagName is passed to context menu ('app-details-short', 'app-details-long',...)
@@ -29,8 +27,6 @@ export class AppComponent implements OnInit {
     private imageService: ImageService) {
     // enableProdMode();
 
-    setTimeout(this.getImages, 1000);
-    // this.getImages();
 
   }
 
@@ -38,13 +34,6 @@ export class AppComponent implements OnInit {
 
   }
 
-  private getImages = () => {
-    this.imageService.requestImages(this.imageCount)
-      .then(result => {
-        this.images = (result as Array<Image>).slice(0, this.imageCount);
-      });
-
-  }
 
   contextActionSelected(action) {
     console.log('on action selected: ' + action);

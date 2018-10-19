@@ -15,6 +15,7 @@ import { ImageService } from './news-feed/services/photo.service';
 import { ImageCardComponent } from './image-card/image-card.component';
 import { ImageCardListComponent } from './image-card-list/image-card-list.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
+import { ArtGalleryComponent } from './art-gallery/art-gallery.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ContextMenuComponent } from './context-menu/context-menu.component';
     ActionBarComponent,
     ImageCardComponent,
     ImageCardListComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    ArtGalleryComponent
   ],
   imports: [
     BrowserModule

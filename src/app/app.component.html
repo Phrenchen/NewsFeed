@@ -1,27 +1,21 @@
-<div class="app-head">
-  <h1>nonsense with lists of things</h1>
-  <p>hold down left mouse button on an image to delete it. non-image elements won´t be deleted - yeah :)</p>
-</div>
 
-  <div id="container">
-    <div id="hudBar" class="hudBar">
-    </div>
-    <app-context-menu
-      (actionSelected)="contextActionSelected($event)"
-    ></app-context-menu>
+<app-context-menu
+  (actionSelected)="contextActionSelected($event)"
+></app-context-menu>
     
     <!-- <app-action-bar id="action-bar"
       (actionSelected)="onActionSelected($event)"
     ></app-action-bar> -->
     
-    <app-news-feed id="news-feed"></app-news-feed>
+    <!-- <app-news-feed id="news-feed"></app-news-feed> -->
 
-    <app-image-card-list id="image-card-list"
+    <!-- <app-image-card-list id="image-card-list"
     [images]="images"
     (imageSelected)="componentSelected($event)"
-    ></app-image-card-list>
+    ></app-image-card-list> -->
 
-  </div>
+
+<app-art-gallery></app-art-gallery>
 
           <!-- <app-ticker></app-ticker> -->
  
