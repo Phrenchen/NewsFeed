@@ -12,10 +12,10 @@ import { DetailsLongComponent } from './news-feed/detail-level/details-long/deta
 import { ActionBarComponent } from './news-feed/action-bar/action-bar.component';
 import { NewsService } from './news-feed/services/news.service';
 import { ImageService } from './news-feed/services/photo.service';
-import { ImageCardComponent } from './image-card/image-card.component';
-import { ImageCardListComponent } from './image-card-list/image-card-list.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { ArtGalleryComponent } from './art-gallery/art-gallery.component';
+import { ImageCardComponent } from './art-gallery/image-card/image-card.component';
+import { ImageCardListComponent } from './art-gallery/image-card-list/image-card-list.component';
 
 @NgModule({
   declarations: [
