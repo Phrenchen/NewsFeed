@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Image } from './image-card/Image';
 import { ImageService } from '../news-feed/services/photo.service';
 import ContextActionTarget from '../context-menu/ContextActionTarget';
+import { ImageCardComponent } from './image-card/image-card.component';
 
 @Component({
   selector: 'app-art-gallery',
@@ -10,7 +11,12 @@ import ContextActionTarget from '../context-menu/ContextActionTarget';
 })
 export class ArtGalleryComponent implements OnInit {
 
+  @Output() itemSelected: EventEmitter<Image> = new EventEmitter<Image>();
+
   public images: Image[];
+  public selectedImage: Image;
+
+
 
   public selectedTarget: ContextActionTarget = {
     action: '',
@@ -29,11 +35,13 @@ export class ArtGalleryComponent implements OnInit {
     console.log(comp);
 
     this.target = comp;
+    this.itemSelected.emit(this.selectedImage);
   }
 
   public set target(targetComponent: Component) {
     this.selectedTarget.component = targetComponent;
-    console.log(this.selectedTarget);
+    const newImage: Image = (this.selectedTarget.component as ImageCardComponent).image;
+    this.selectedImage = newImage !== this.selectedImage ? newImage : null;
   }
 
   private getImages = () => {

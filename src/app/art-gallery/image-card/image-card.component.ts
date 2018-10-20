@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, AfterViewInit, SecurityContext } from '@angular/core';
 import { Image } from './Image';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-image-card',
@@ -13,16 +14,17 @@ export class ImageCardComponent implements OnInit, AfterViewInit {
 
   @Output() selected: EventEmitter<Component> = new EventEmitter<Component>();
 
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
   }
 
   ngAfterViewInit(): void {
     document.querySelector('#card_' + this.image.id).addEventListener('click', e => {
-      console.log(this as Component);
       this.selected.emit(this as Component);
     });
-  }
 
+    // document.querySelector('#long-stuff').innerHTML =
+      // this.sanitizer.sanitize(SecurityContext.HTML, this.image.longDescription);
+  }
 }

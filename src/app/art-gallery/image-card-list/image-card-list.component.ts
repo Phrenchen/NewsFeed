@@ -24,7 +24,7 @@ export class ImageCardListComponent implements OnInit {
   }
 
   public cardSeleced(comp: Component): void {
-    console.log(comp);
+    // console.log(comp);
     this.imageSelected.emit(comp);
 
   }

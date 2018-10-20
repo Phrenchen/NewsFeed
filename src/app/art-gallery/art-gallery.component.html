@@ -1,5 +1,10 @@
-<h1>Image Gallery</h1>
-<app-image-card-list id="image-card-list"
+<div class="gallery-content">
+  <app-image-card-list id="image-card-list" class="teaser-list"
     [images]="images"
     (imageSelected)="componentSelected($event)"
   ></app-image-card-list>
+
+  <app-image-detail *ngIf="selectedImage"
+    [image]="selectedImage"
+  ></app-image-detail>
+</div>

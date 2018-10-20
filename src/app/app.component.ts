@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from './news-feed/services/news.service';
-import { ImageService } from './news-feed/services/photo.service';
 import ContextMenuConsts from './context-menu/ContextMenuConsts';
+import { Image } from './art-gallery/image-card/Image';
+import ContextActionTarget from './context-menu/ContextActionTarget';
+import { EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,23 +11,35 @@ import ContextMenuConsts from './context-menu/ContextMenuConsts';
 })
 export class AppComponent implements OnInit {
 
+  private static EMPTY = '';
+
   private title = 'news-feed';
 
+  private selectedTarget: Component;
 
-
-  constructor(private newsService: NewsService,
-    private imageService: ImageService) {
-    // enableProdMode();
+  constructor() {
 
 
   }
 
   ngOnInit() {
+    // this.setupContextActions();
+  }
 
+  private executeContextAction(action: string) {
+    if (this.selectedTarget !== null && action !== AppComponent.EMPTY) {
+      console.log('executing action ' + action + ' on: ');
+      console.log(this.selectedTarget);
+    }
+  }
+
+  public itemSelected(item) {
+      // setup promise
+    this.selectedTarget = item !== this.selectedTarget ? item : null;
   }
 
 
-  contextActionSelected(action) {
+  public contextActionSelected(action) {
     console.log('on action selected: ' + action);
 
     switch (action) {
@@ -34,13 +47,11 @@ export class AppComponent implements OnInit {
       case ContextMenuConsts.ACTION_CLONE:
       case ContextMenuConsts.ACTION_MARK:
         console.log('context action selected: ' + action);
-        // this.selectedTarget.action = action;
+        this.executeContextAction(action);
         break;
       default: console.log('undefined action: ' + action);
     }
 
     // console.log(this.selectedTarget);
   }
-
-  
 }

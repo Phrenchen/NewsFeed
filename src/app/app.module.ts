@@ -16,6 +16,7 @@ import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { ArtGalleryComponent } from './art-gallery/art-gallery.component';
 import { ImageCardComponent } from './art-gallery/image-card/image-card.component';
 import { ImageCardListComponent } from './art-gallery/image-card-list/image-card-list.component';
+import { ImageDetailComponent } from './art-gallery/image-detail/image-detail.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ImageCardListComponent } from './art-gallery/image-card-list/image-card
     ImageCardComponent,
     ImageCardListComponent,
     ContextMenuComponent,
-    ArtGalleryComponent
+    ArtGalleryComponent,
+    ImageDetailComponent
   ],
   imports: [
     BrowserModule
