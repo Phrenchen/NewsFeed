@@ -17,15 +17,22 @@ export class ImageCardListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if (!this.images) {
-      return;
-    }
-    console.log('image count: ' + this.images.length);
   }
 
   public cardSeleced(comp: Component): void {
     // console.log(comp);
     this.imageSelected.emit(comp);
 
+    const mql = window.matchMedia('(min-width: 600px)');
+    if (mql.matches) {
+      // media query passt
+      console.log('media query active');
+    }
+
+    const mql1 = window.matchMedia('(min-width: 900px)');
+    if (mql1.matches) {
+      // media query passt
+      console.log('1 media query active');
+    }
   }
 }
