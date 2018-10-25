@@ -8,7 +8,8 @@
     "postinstall": "ng build --aot --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "update": "npm uninstall -g angular-cli && npm cache verify && npm install -g @angular/cli@latest"
   },
   "private": true,
   "dependencies": {
