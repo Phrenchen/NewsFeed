@@ -94,7 +94,7 @@ const responseData = [{
     shortDescription: 'interested in cat content?',    // HTML
     longDescription: '<h2>Cats!</h2> <img draggable="false" onload="console.log(`script executed! alert!`)" src="assets/images/happy_cat.jpg" alt="cat!" style="width:100%;">',
     thumbnail: "/assets/images/happy_cat.jpg",
-    images: ["explosionkitty.jpeg", "lazy cat.png", "mr_mustache.jpg", "ohnoes.jpg", "surprisedcat3.jpg", "tshirt.jpeg" ]
+    images: ["explosionkitty.jpeg", "lazycat.png", "mr_mustache.jpg", "ohnoes.jpg", "surprisedcat3.jpg", "tshirt.jpeg" ]
   },
   {
     id: '2',
