@@ -33,7 +33,8 @@ const exampleMatch = {
     title: '',                      // HTML
     shortDescription: '',    // HTML
     longDescription: '',
-    thumbnail: ''
+    thumbnail: '',
+    images: []
     };
 
 // app.post('api/news', (req, res) =>{
@@ -92,7 +93,8 @@ const responseData = [{
     title: 'cat content',                      // HTML
     shortDescription: 'interested in cat content?',    // HTML
     longDescription: '<h2>Cats!</h2> <img draggable="false" onload="console.log(`script executed! alert!`)" src="assets/images/happy_cat.jpg" alt="cat!" style="width:100%;">',
-    thumbnail: "/assets/images/happy_cat.jpg"
+    thumbnail: "/assets/images/happy_cat.jpg",
+    images: ["explosionkitty.jpeg", "lazy cat.png", "mr_mustache.jpg", "ohnoes.jpg", "surprisedcat3.jpg", "tshirt.jpeg" ]
   },
   {
     id: '2',
@@ -110,7 +112,8 @@ const responseData = [{
     title: 'AI plays Snake',                      // HTML
     shortDescription: 'video links',    // HTML
     longDescription: '<div><a href="https://www.youtube.com/watch?v=3bhP7zulFfY" target="_blank">AI plays Snake</a> </div>',       // HTML
-    thumbnail: "assets/images/ai_snake_game.png"
+    thumbnail: "assets/images/ai_snake_game.png",
+    images: []
   }
 ];
 

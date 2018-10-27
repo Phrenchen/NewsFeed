@@ -41,7 +41,7 @@ module.exports = "body{\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-head\">\r\n  <h1>nonsense with lists of things</h1>\r\n  <p></p>\r\n</div>\r\n\r\n  <div id=\"container\">\r\n    <div id=\"hudBar\" class=\"hudBar\">\r\n    </div>\r\n    <app-context-menu\r\n      (actionSelected)=\"contextActionSelected($event)\"\r\n    ></app-context-menu>\r\n    \r\n    <!-- <app-action-bar id=\"action-bar\"\r\n      (actionSelected)=\"onActionSelected($event)\"\r\n    ></app-action-bar> -->\r\n    \r\n    <app-news-feed id=\"news-feed\"></app-news-feed>\r\n\r\n    <app-image-card-list id=\"image-card-list\"\r\n    [images]=\"images\"\r\n    (imageSelected)=\"componentSelected($event)\"\r\n    ></app-image-card-list>\r\n\r\n  </div>\r\n\r\n          <!-- <app-ticker></app-ticker> -->\r\n "
+module.exports = "<div class=\"app-head\">\r\n  <h1>nonsense with lists of things</h1>\r\n  <p></p>\r\n</div>\r\n\r\n  <div id=\"container\">\r\n    <div id=\"hudBar\" class=\"hudBar\">\r\n    </div>\r\n    <!-- <app-context-menu\r\n      (actionSelected)=\"contextActionSelected($event)\"\r\n    ></app-context-menu> -->\r\n    \r\n    <!-- <app-action-bar id=\"action-bar\"\r\n      (actionSelected)=\"onActionSelected($event)\"\r\n    ></app-action-bar> -->\r\n    \r\n    <app-news-feed id=\"news-feed\"></app-news-feed>\r\n\r\n    <!-- <app-image-card-list id=\"image-card-list\"\r\n    [images]=\"images\"\r\n    (imageSelected)=\"componentSelected($event)\"\r\n    ></app-image-card-list> -->\r\n\r\n  </div>\r\n\r\n          <!-- <app-ticker></app-ticker> -->\r\n "
 
 /***/ }),
 
@@ -450,7 +450,7 @@ var ContextMenuComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".image-list-grid{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\r\n    grid-gap: 5px;\r\n    width: 100%;\r\n    \r\n}\r\n\r\n"
+module.exports = ".image-list-grid{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\r\n    grid-gap: 5px;\r\n    width: 100%;\r\n    align-items: center;\r\n    justify-items: center;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -532,7 +532,7 @@ var ImageCardListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".image-card-grid{\r\n    border: 1px solid lightblue;\r\n}\r\n\r\nh1 {\r\n    font-size: 1em;\r\n}\r\n\r\nimg{\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}"
+module.exports = "h1 {\r\n    font-size: 1em;\r\n}\r\n\r\nimg{\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}"
 
 /***/ }),
 
@@ -689,7 +689,7 @@ var ActionBarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#long-stuff{\r\n    border: 1px solid black;\r\n    margin-right: 10px;\r\n    padding: 5px 5px 5px 5px;\r\n}\r\n\r\nimg{\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}"
+module.exports = "image-list{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\r\n}\r\n\r\n#long-stuff{\r\n    /* border: 1px solid black; */\r\n    margin-right: 10px;\r\n    padding: 5px 5px 5px 5px;\r\n}\r\n\r\nimg{\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}"
 
 /***/ }),
 
@@ -700,7 +700,7 @@ module.exports = "#long-stuff{\r\n    border: 1px solid black;\r\n    margin-rig
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - complete content. possibly scrollable / multi-paged\n-->\n\n<div id=\"long-stuff\"></div>\n"
+module.exports = "<!--\n  - complete content. possibly scrollable / multi-paged\n-->\n<div *ngIf=\"hasImageList\"\n  class=\"image-list\">\n  <img *ngFor=\"let image of news.images\" \n    src=\"images/{{image}}\" alt=\"\"\n  />\n</div>\n<div *ngIf=\"false\" id=\"long-stuff\"></div>\n"
 
 /***/ }),
 
@@ -734,9 +734,18 @@ var DetailsLongComponent = /** @class */ (function () {
     DetailsLongComponent.prototype.ngOnInit = function () {
     };
     DetailsLongComponent.prototype.ngAfterViewInit = function () {
-        document.querySelector('#long-stuff').innerHTML =
-            this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.longDescription);
+        var contentContainer = document.querySelector('#long-stuff');
+        if (contentContainer) {
+            contentContainer.innerHTML = this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.longDescription);
+        }
     };
+    Object.defineProperty(DetailsLongComponent.prototype, "hasImageList", {
+        get: function () {
+            return this.news.images.length > 0;
+        },
+        enumerable: true,
+        configurable: true
+    });
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -763,7 +772,7 @@ var DetailsLongComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".details-short{\r\n    align-items: center;\r\n    justify-content: center;\r\n\r\n    height: 100%;\r\n    cursor: pointer;\r\n    border: 1px solid rgba(0, 0, 0, 0);\r\n    min-width: -webkit-min-content;\r\n    min-width: -moz-min-content;\r\n    min-width: min-content;\r\n}\r\n\r\n.title{\r\n    font-style: oblique;\r\n}\r\n\r\nspan{\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.details-short:hover{\r\n    color: darkgrey;\r\n}"
+module.exports = ".details-short{\r\n    align-items: center;\r\n    justify-content: center;\r\n\r\n    height: 100%;\r\n    cursor: pointer;\r\n    min-width: -webkit-min-content;\r\n    min-width: -moz-min-content;\r\n    min-width: min-content;\r\n}\r\n\r\n.title{\r\n    font-style: oblique;\r\n}\r\n\r\nspan{\r\n    padding-left: 10px;\r\n    padding-right: 10px;\r\n}\r\n\r\n.details-short:hover{\r\n    color: darkgrey;\r\n}"
 
 /***/ }),
 
@@ -774,7 +783,7 @@ module.exports = ".details-short{\r\n    align-items: center;\r\n    justify-con
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - title + short description in 1 line\n-->\n\n<button>\n  <div clasS=\"details-short\">\n      <span class=\"title\" id=\"title_{{news.id}}\"> short: {{news.title}} - </span>\n    <span id='shortDescription_{{news.id}}'></span>\n  </div>\n</button>"
+module.exports = "<!--\n  - title + short description in 1 line\n-->\n<button>\n  <div clasS=\"details-short\">\n      <span class=\"title\" id=\"title_{{news.id}}\">{{news.title}}</span>\n  </div>\n</button>"
 
 /***/ }),
 
@@ -809,11 +818,11 @@ var DetailsShortComponent = /** @class */ (function () {
     DetailsShortComponent.prototype.ngOnInit = function () {
     };
     DetailsShortComponent.prototype.ngAfterViewInit = function () {
-        var shortDescription = this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.shortDescription);
-        document.querySelector('#title_' + this.news.id).innerHTML = this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.title);
-        var id = '#shortDescription_' + this.news.id;
-        document.querySelector('#shortDescription_' + this.news.id).innerHTML =
-            this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.shortDescription);
+        //   const shortDescription = this.sanitizer.sanitize(SecurityContext.HTML, this.news.shortDescription);
+        //    document.querySelector('#title_' + this.news.id).innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, this.news.title);
+        //   const id: string = '#shortDescription_' + this.news.id;
+        //   document.querySelector('#shortDescription_' + this.news.id).innerHTML =
+        //     this.sanitizer.sanitize(SecurityContext.HTML, this.news.shortDescription);
     };
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
@@ -845,7 +854,7 @@ var DetailsShortComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".card{\r\n    border: 1px solid black;\r\n    width: auto;\r\n    cursor: pointer;\r\n    max-width: 120px;\r\n    padding: 5px 5px 5px 5px;\r\n}\r\n\r\n.teaser-thumbnail{\r\n    max-width: 100px;\r\n}\r\n\r\nimg{\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}"
+module.exports = ".card{\r\n    width: auto;\r\n    /* cursor: pointer; */\r\n\r\n    min-width: 50px;\r\n    max-width: 30vw;\r\n    padding: 5px 5px 5px 5px;\r\n    /* border: 1px solid black; */\r\n}\r\n\r\n.teaser-thumbnail{\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}\r\n\r\nimg{\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}\r\n\r\nh4{\r\n    font-size: 1rem;\r\n    margin: 0;\r\n}\r\n\r\nbutton{\r\n    cursor: pointer;\r\n}"
 
 /***/ }),
 
@@ -856,7 +865,7 @@ module.exports = ".card{\r\n    border: 1px solid black;\r\n    width: auto;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - card\n  - title + thumbnail short description\n  - click on teaser -> show long version\n-->\n<div class=\"card\"\n  (click)=\"onTeaserClick()\"\n>\n  <img class=\"teaser-thumbnail\" *ngIf=\"hasThumbnail\" src={{thumbnail}} alt=\"Avatar\" style=\"width:100%\" draggable=\"false\">\n  <div class=\"container\">\n    <h4>{{title}}</h4> \n  </div>\n</div>"
+module.exports = "<!--\n  - card\n  - title + thumbnail short description\n  - click on teaser -> show long version\n-->\n<div class=\"card\"\n  \n>\n  <h4>{{title}}</h4> \n  <img class=\"teaser-thumbnail\" *ngIf=\"hasThumbnail\" src={{thumbnail}} alt=\"Avatar\" style=\"width:100%\" draggable=\"false\">\n  <button (click)=\"onTeaserClick()\">\n    <p>{{shortDescription}}</p>\n  </button>\n</div>"
 
 /***/ }),
 
@@ -1112,7 +1121,7 @@ var NewsFeedConsts = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".news-feed{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    width: 100%;\r\n    background-color: cornsilk;\r\n    justify-items: center;\r\n}\r\n\r\n/* global positioning of icon. no bubble skinning*/\r\n\r\n.hud-icon-favourite-bubble{\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 10px 5px 5px 5px;\r\n    \r\n}\r\n\r\n.hud-icon-feed-bubble{\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 10px 5px 5px 5px;\r\n}\r\n\r\n.hud-icon-ticker{\r\n    width: 100%;\r\n    margin: 10px 0 0 0;\r\n     /* margin: 5px 5px 5px auto; */\r\n     margin: 5px 5px 5px 5px;\r\n    /* padding-left: 5px; */\r\n    \r\n    /* border: 1px solid blue; */\r\n}\r\n\r\n.selected-item-details{\r\n    border: 1px dotted darkgreen;\r\n}"
+module.exports = ".news-feed{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    width: 100%;\r\n    /* background-color: cornsilk; */\r\n    justify-items: center;\r\n}\r\n\r\n/* global positioning of icon. no bubble skinning*/\r\n\r\n.hud-icon-favourite-bubble{\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 10px 5px 5px 5px;\r\n    \r\n}\r\n\r\n.hud-icon-feed-bubble{\r\n    width: 50px;\r\n    height: 50px;\r\n    margin: 10px 5px 5px 5px;\r\n}\r\n\r\n.hud-icon-ticker{\r\n    width: 100%;\r\n    margin: 10px 0 0 0;\r\n     /* margin: 5px 5px 5px auto; */\r\n     margin: 5px 5px 5px 5px;\r\n    /* padding-left: 5px; */\r\n}"
 
 /***/ }),
 
@@ -1123,7 +1132,7 @@ module.exports = ".news-feed{\r\n    display: -ms-grid;\r\n    display: grid;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-feed\">\n  <!-- <app-favourite-bubble \n    class=\"hud-icon-favourite-bubble\"\n    [counter]=\"getUnreadFavouriteCount()\"\n  ></app-favourite-bubble> -->\n  <!-- <app-feed-bubble \n    class=\"hud-icon-feed-bubble\"\n    [counter]=\"getUnreadNewsCount()\"\n  ></app-feed-bubble> -->\n  <app-ticker \n    class=\"hud-icon-ticker\"\n    [news]=\"news\"\n    (itemClicked)=\"onTickerItemClick($event)\"\n  ></app-ticker>\n\n</div>\n\n<!-- <app-details-teaser class=\"selected-item-details\" *ngIf=\"hasSelectedItem\"\n  [news]=selectedItem\n  (teaserClicked)=\"onTeaserClick($event)\">\n</app-details-teaser> -->\n\n<app-details-long *ngIf=\"showLongVersion\"\n  [news]=\"selectedItem\"\n></app-details-long>\n\n<!--\n<app-news-item class=\"selected-item-details\" *ngIf=\"hasSelectedItem()\"\n  [item]=\"selectedItem\"\n></app-news-item>\n-->"
+module.exports = "<div class=\"news-feed\">\r\n  <!-- <app-favourite-bubble \r\n    class=\"hud-icon-favourite-bubble\"\r\n    [counter]=\"getUnreadFavouriteCount()\"\r\n  ></app-favourite-bubble> -->\r\n  <!-- <app-feed-bubble \r\n    class=\"hud-icon-feed-bubble\"\r\n    [counter]=\"getUnreadNewsCount()\"\r\n  ></app-feed-bubble> -->\r\n  <app-ticker \r\n    class=\"hud-icon-ticker\"\r\n    [news]=\"news\"\r\n    (itemClicked)=\"onTickerItemClick($event)\"\r\n  ></app-ticker>\r\n\r\n</div>\r\n\r\n<app-details-teaser class=\"selected-item-details\" *ngIf=\"hasSelectedItem\"\r\n  [news]=selectedItem\r\n  (teaserClicked)=\"onTeaserClick($event)\">\r\n</app-details-teaser>\r\n\r\n<app-details-long *ngIf=\"showLongVersion\"\r\n  [news]=\"selectedItem\"\r\n></app-details-long>\r\n\r\n<!--\r\n<app-news-item class=\"selected-item-details\" *ngIf=\"hasSelectedItem()\"\r\n  [item]=\"selectedItem\"\r\n></app-news-item>\r\n-->"
 
 /***/ }),
 
@@ -1236,8 +1245,7 @@ var NewsFeedComponent = /** @class */ (function () {
     };
     Object.defineProperty(NewsFeedComponent.prototype, "showLongVersion", {
         get: function () {
-            // return this.isLongVersionRequested;
-            return this.hasSelectedItem;
+            return this.isLongVersionRequested;
         },
         enumerable: true,
         configurable: true
@@ -1346,7 +1354,8 @@ var NewsService = /** @class */ (function () {
             title: title,
             shortDescription: shortDescription,
             longDescription: 'loooong: ' + shortDescription,
-            thumbnail: null
+            thumbnail: null,
+            images: []
         };
     };
     var NewsService_1;
@@ -1415,7 +1424,7 @@ var ImageService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".ticker{\r\n    display: flex;\r\n    flex-direction: row;\r\n    /* border: 1px solid black; */\r\n    height: 100%;\r\n}"
+module.exports = ".ticker{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\r\n    grid-gap: 5px;\r\n    width: 100%;\r\n    height: 100%;\r\n\r\n    align-items: center;\r\n    justify-items: center;\r\n}"
 
 /***/ }),
 
@@ -1426,7 +1435,7 @@ module.exports = ".ticker{\r\n    display: flex;\r\n    flex-direction: row;\r\n
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - represents a list of news items, viewed in \"detail level: short description\"\n  - Single line of text, transitioning from one news item to the next. endlessly looping\n  \n-->\n\n<div class=\"ticker\">\n  \n  <div *ngFor=\"let item of news; let i = index\" \n  class=\"ticker-item\"\n  (click)=\"tickerItemClicked(item)\"\n  >\n  <!-- <app-details-short \n    [news]=item \n    [totalNewsCount]=news.length\n    ></app-details-short> -->\n    \n    <button>\n        <app-details-teaser\n          [news]=item \n        >\n        \n      </app-details-teaser>\n    </button>\n\n      <!--\n        <span class=\"badge\">({{i+1}}/{{news.length}}) {{item.title}}</span> {{item.shortDescription}} <span *ngIf=\"i<news.length - 1\"></span>\n        -->\n        </div>\n  <!--\n  <span>(2/3) [TITLE] Lorem ipsum dolor sit amet.</span> --- \n  <span>(1/3) [TITLE] Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span> --- \n  <span>(3/3) [TITLE] Lorem ipsum ...</span>\n  -->\n</div>"
+module.exports = "<!--\n  - represents a list of news items, viewed in \"detail level: short description\"\n  - Single line of text, transitioning from one news item to the next. endlessly looping\n  \n-->\n\n<div class=\"ticker\">\n  \n  <div *ngFor=\"let item of news; let i = index\" \n  class=\"ticker-item\"\n  (click)=\"tickerItemClicked(item)\"\n  >\n  \n      <app-details-short \n        [news]=item \n        [totalNewsCount]=news.length\n        ></app-details-short>\n        \n        <!-- <app-details-teaser\n          [news]=item \n        >\n      </app-details-teaser> -->\n\n      <!--\n        <span class=\"badge\">({{i+1}}/{{news.length}}) {{item.title}}</span> {{item.shortDescription}} <span *ngIf=\"i<news.length - 1\"></span>\n        -->\n        </div>\n  <!--\n  <span>(2/3) [TITLE] Lorem ipsum dolor sit amet.</span> --- \n  <span>(1/3) [TITLE] Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span> --- \n  <span>(3/3) [TITLE] Lorem ipsum ...</span>\n  -->\n</div>"
 
 /***/ }),
 

@@ -17,7 +17,13 @@ export class DetailsLongComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    document.querySelector('#long-stuff').innerHTML =
-      this.sanitizer.sanitize(SecurityContext.HTML, this.news.longDescription);
+    const contentContainer = document.querySelector('#long-stuff');
+    if (contentContainer) {
+      contentContainer.innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, this.news.longDescription);
+    }
+  }
+
+  public get hasImageList() {
+    return this.news.images.length > 0;
   }
 }
