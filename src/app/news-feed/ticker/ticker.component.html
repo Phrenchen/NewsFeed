@@ -6,14 +6,20 @@
 
 <div class="ticker">
   
-      <div *ngFor="let item of news; let i = index" 
-        class="ticker-item"
-        (click)="tickerItemClicked(item)"
-      >
+  <div *ngFor="let item of news; let i = index" 
+  class="ticker-item"
+  (click)="tickerItemClicked(item)"
+  >
+  
       <app-details-short 
         [news]=item 
         [totalNewsCount]=news.length
-      ></app-details-short>
+        ></app-details-short>
+        
+        <!-- <app-details-teaser
+          [news]=item 
+        >
+      </app-details-teaser> -->
 
       <!--
         <span class="badge">({{i+1}}/{{news.length}}) {{item.title}}</span> {{item.shortDescription}} <span *ngIf="i<news.length - 1"></span>

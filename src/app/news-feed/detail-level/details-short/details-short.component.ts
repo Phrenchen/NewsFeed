@@ -18,13 +18,13 @@ export class DetailsShortComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const shortDescription = this.sanitizer.sanitize(SecurityContext.HTML, this.news.shortDescription);
-     document.querySelector('#title_' + this.news.id).innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, this.news.title);
+  //   const shortDescription = this.sanitizer.sanitize(SecurityContext.HTML, this.news.shortDescription);
+  //    document.querySelector('#title_' + this.news.id).innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, this.news.title);
 
-    const id: string = '#shortDescription_' + this.news.id;
+  //   const id: string = '#shortDescription_' + this.news.id;
 
-    document.querySelector('#shortDescription_' + this.news.id).innerHTML =
-      this.sanitizer.sanitize(SecurityContext.HTML, this.news.shortDescription);
+  //   document.querySelector('#shortDescription_' + this.news.id).innerHTML =
+  //     this.sanitizer.sanitize(SecurityContext.HTML, this.news.shortDescription);
 
   }
 }

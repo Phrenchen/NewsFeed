@@ -1,9 +1,10 @@
 #long-stuff{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-right: 10px;
     padding: 5px 5px 5px 5px;
 }
 
 img{
-    user-select: none;
+    max-width: 100%;
+    max-height: 100%;
 }

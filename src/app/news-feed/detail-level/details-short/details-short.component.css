@@ -1,9 +1,10 @@
 .details-short{
-    display: flex;
     align-items: center;
     justify-content: center;
 
     height: 100%;
+    cursor: pointer;
+    min-width: min-content;
 }
 
 .title{
@@ -15,6 +16,7 @@ span{
     padding-right: 10px;
 }
 
-img{
-    user-select: none;
+
+.details-short:hover{
+    color: darkgrey;
 }

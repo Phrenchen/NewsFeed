@@ -4,11 +4,11 @@
   - click on teaser -> show long version
 -->
 <div class="card"
-  (click)="onTeaserClick()"
+  
 >
+  <h4>{{title}}</h4> 
   <img class="teaser-thumbnail" *ngIf="hasThumbnail" src={{thumbnail}} alt="Avatar" style="width:100%" draggable="false">
-  <div class="container">
-    <h4><b>teaser card</b></h4> 
-    <p>{{title}}</p> 
-  </div>
+  <button (click)="onTeaserClick()">
+    <p>{{shortDescription}}</p>
+  </button>
 </div>
