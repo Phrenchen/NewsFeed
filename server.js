@@ -33,7 +33,8 @@ const exampleMatch = {
     title: '',                      // HTML
     shortDescription: '',    // HTML
     longDescription: '',
-    thumbnail: ''
+    thumbnail: '',
+    images: []
     };
 
 // app.post('api/news', (req, res) =>{
@@ -89,10 +90,11 @@ const responseData = [{
     sortOrder: 1,
 
     // content
-    title: 'news title',                      // HTML
-    shortDescription: '<strong> short description 1</strong>',    // HTML
-    longDescription: '<h2>Happy Cat</h2> <img draggable="false" onload="console.log(`script executed! alert!`)" src="assets/images/happy_cat.jpg" alt="cat!" style="width:100%; user-select:none;"> <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy </p> <a href="https://giphy.com/explore/happy-cat" target="_blank">happy cats</a> are <ul><li>cute</li><li>happy</li><li>hungry</li></ul>eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren</p>',
-    thumbnail: "/assets/images/happy_cat.jpg"
+    title: 'cat content',                      // HTML
+    shortDescription: 'interested in cat content?',    // HTML
+    longDescription: '<h2>Cats!</h2> <img draggable="false" onload="console.log(`script executed! alert!`)" src="assets/images/happy_cat.jpg" alt="cat!" style="width:100%;">',
+    thumbnail: "/assets/images/happy_cat.jpg",
+    images: ["explosionkitty.jpeg", "lazycat.png", "mr_mustache.jpg", "ohnoes.jpg", "surprisedcat3.jpg", "tshirt.jpeg" ]
   },
   {
     id: '2',
@@ -107,27 +109,11 @@ const responseData = [{
     sortOrder: 2,
 
     // content
-    title: 'news title 2',                      // HTML
-    shortDescription: 'short description 2',    // HTML
-    longDescription: '<div>hi. <a href="https://www.google.de" target="_blank">goog le</a> </div>',       // HTML
-    thumbnail: null
-  },
-  {
-    id: '3',
-    isRead: true,
-    isFavourite: false,
-
-    // content meta
-    dateCreated: new Date(),
-    dateUpdated: new Date(),
-    dateRead: new Date(),
-    seoDescritpion: 'seo tags',
-    sortOrder: 3,
-
-    // content
-    title: 'news title 3',                      // HTML
-    shortDescription: 'short description 3',    // HTML
-    longDescription: '<div class="long-description-container"> <h3>Lorem ipsum dolor sit amet</h3> <p>Lorem ipsum dolor sit amet, <a href="https://www.google.de" target="_blank">goog le</a>consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p> </div>',
-    thumbnail: null
+    title: 'AI plays Snake',                      // HTML
+    shortDescription: 'video links',    // HTML
+    longDescription: '<div><a href="https://www.youtube.com/watch?v=3bhP7zulFfY" target="_blank">AI plays Snake</a> </div>',       // HTML
+    thumbnail: "assets/images/ai_snake_game.png",
+    images: []
   }
 ];
+

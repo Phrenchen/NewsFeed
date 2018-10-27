@@ -1,9 +1,19 @@
+.image-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-gap: 5px;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+
+}
+
 #long-stuff{
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin-right: 10px;
     padding: 5px 5px 5px 5px;
 }
 
 img{
-    user-select: none;
+    max-width: 150px;
 }
