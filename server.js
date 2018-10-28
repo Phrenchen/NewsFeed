@@ -18,7 +18,23 @@ app.use(express.static(__dirname + "/dist/news-feed"));
 
 // POSTGRESQL
 async function deleteOldNews() {
-    return await db.any('DELETE FROM news')
+    // return await db.any(`DROP TABLE news CREATE TABLE news`)
+    return await db.any(`DROP TABLE IF EXISTS news; CREATE TABLE news
+    (
+      id uuid NOT NULL,
+      title text,
+      shortdescription text,
+      longdescription text,
+      images text[],
+      thumbnail text,
+      CONSTRAINT news_id PRIMARY KEY (id)
+    )
+    WITH (
+      OIDS=FALSE
+    );
+    ALTER TABLE news
+      OWNER TO defaultuser;
+    `)
         .then(() => {
             console.log("deleted all news");
             return true;
