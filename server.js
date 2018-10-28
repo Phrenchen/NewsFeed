@@ -1,8 +1,43 @@
 var express = require('express');
 const path = require('path');
 var app = express();
+var pgp = require('pg-promise')(/* options */);
+// var db = pgp('postgres://username:password@host:port/database');
+var db = pgp("postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed");
 
 app.use(express.static(__dirname + "/dist/news-feed"));
+
+
+
+// POSTGRESQL
+// db.one("SELECT $1 AS value", 123)
+// .then(function (data) {
+//     console.log("DATA:", data.value);
+// })
+// .catch(function (error) {
+//     console.log("ERROR:", error);
+// });
+
+async function getNews() {
+    try{
+        return await db.any('SELECT * FROM NewsItems', [true])
+            .then(data => {
+                // success
+                console.log("got news from postgres! " + data);
+                console.log(data.length);
+                return data;
+            });
+    }
+    catch(e){
+        console.log("error calling postgresq");
+        return [];
+    }
+    
+}
+// POSTGRESQL end
+
+
+
 
 app.get('/', (req, res) => {
     // console.log("get root"); 
@@ -11,8 +46,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/news', (req, res) =>{
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send(responseData);
+    getNews()
+        .then(result =>{
+            console.log("received result: " + result);
+            console.log(result.length);
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.send(responseData);
+        });
 });
 
 // add news

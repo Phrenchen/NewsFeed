@@ -25,6 +25,7 @@
     "axios": "^0.18.0",
     "core-js": "^2.5.4",
     "express": "^4.16.4",
+    "pg-promise": "^8.5.1",
     "rxjs": "~6.2.0",
     "typescript": "~2.9.2",
     "zone.js": "~0.8.26"
