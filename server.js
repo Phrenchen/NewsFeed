@@ -11,6 +11,7 @@ var app = express();
 
 
 var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed";
+console.log("db url:  " + dbUrl);
 var db = pgp(dbUrl);
 app.use(express.static(__dirname + "/dist/news-feed"));
 
