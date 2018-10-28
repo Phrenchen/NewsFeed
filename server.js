@@ -10,6 +10,18 @@ app.use(express.static(__dirname + "/dist/news-feed"));
 
 
 // POSTGRESQL
+async function deleteOldNews() {
+    return await db.any('DELETE FROM news')
+        .then(() => {
+            console.log("deleted all news");
+            return true;
+        }).catch(e => {
+            console.log("error deleting news");
+            console.log(e);
+            return false;
+        });
+}
+
 async function getNews() {
     try{
         return await db.any('SELECT * FROM news', [true])
@@ -18,6 +30,8 @@ async function getNews() {
                 console.log("got news from postgres!");
                 console.log(data.length);
                 return data;
+            }).catch(e => {
+                console.log("error catch ");
             });
     }
     catch(e){
@@ -40,7 +54,7 @@ async function addNews(title, shortDescription, longDescription, thumbnail, imag
         .catch(error => {
             // error;
             console.log("error adding newsitem!");
-            console.log(error   );
+            console.log(error);
             return false;
         });
 }
@@ -71,14 +85,20 @@ app.get('/api/news', (req, res) =>{
 });
 
 
+
 async function initializeNews() {
+    let newNews;
+
+    await deleteOldNews();
+    newNews = await getNews();
+    console.log("total news after deleting: " + newNews.length);
     await addNews("news numma 1!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
     console.log("1 complete");
     await addNews("news numma 2!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
     console.log("2 complete");
     await addNews("news numma 3!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
     console.log("3 complete");
-    const newNews = await getNews();
+    newNews = await getNews();
     console.log("total news: " + newNews.length);
     
 }
