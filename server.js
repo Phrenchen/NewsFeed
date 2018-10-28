@@ -28,9 +28,6 @@ async function deleteOldNews() {
       images text[],
       thumbnail text,
       CONSTRAINT news_id PRIMARY KEY (id)
-    )
-    WITH (
-      OIDS=FALSE
     );
     ALTER TABLE news
       OWNER TO defaultuser;
