@@ -4,40 +4,54 @@ var app = express();
 var pgp = require('pg-promise')(/* options */);
 // var db = pgp('postgres://username:password@host:port/database');
 var db = pgp("postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed");
-
+const uuid = require('uuid');
 app.use(express.static(__dirname + "/dist/news-feed"));
 
 
 
 // POSTGRESQL
-// db.one("SELECT $1 AS value", 123)
-// .then(function (data) {
-//     console.log("DATA:", data.value);
-// })
-// .catch(function (error) {
-//     console.log("ERROR:", error);
-// });
-
 async function getNews() {
     try{
-        return await db.any('SELECT * FROM NewsItems', [true])
+        return await db.any('SELECT * FROM news', [true])
             .then(data => {
                 // success
-                console.log("got news from postgres! " + data);
+                console.log("got news from postgres!");
                 console.log(data.length);
                 return data;
             });
     }
     catch(e){
         console.log("error calling postgresq");
+        console.log(e);
         return [];
     }
     
 }
+// addNews("news numma 1!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
+async function addNews(title, shortDescription, longDescription, thumbnail, images) {
+    const id = uuid();
+    
+    return db.none('INSERT INTO news(id, title, shortDescription, longDescription, thumbnail, images) VALUES($1, $2, $3, $4, $5, $6)', [id, title, shortDescription, longDescription, thumbnail, images])
+        .then(() => {
+            // success;
+            console.log("success adding newsitem!");
+            return true;
+        })
+        .catch(error => {
+            // error;
+            console.log("error adding newsitem!");
+            console.log(error   );
+            return false;
+        });
+}
 // POSTGRESQL end
 
+// listen
+const port = 8080;
 
-
+app.listen(process.env.PORT || port, () => {
+    console.log(`-> listening on port ${port}`);
+});
 
 app.get('/', (req, res) => {
     // console.log("get root"); 
@@ -51,71 +65,38 @@ app.get('/api/news', (req, res) =>{
             console.log("received result: " + result);
             console.log(result.length);
             res.setHeader('Access-Control-Allow-Origin', '*');
-            res.send(responseData);
+            // res.send(responseData);
+            res.send(result);
         });
 });
 
-// add news
-const maxNewsCount = 1000;
-const exampleMatch = {
-    id: '-1',
-    isRead: false,
-    isFavourite: true,
 
-    // content meta
-    dateCreated: null,
-    dateUpdated: null,
-    dateRead: null,
-    seoDescritpion: '',
-    sortOrder: -1,
+async function initializeNews() {
+    await addNews("news numma 1!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
+    console.log("1 complete");
+    await addNews("news numma 2!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
+    console.log("2 complete");
+    await addNews("news numma 3!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
+    console.log("3 complete");
+    const newNews = await getNews();
+    console.log("total news: " + newNews.length);
+    
+}
 
-    // content
-    title: '',                      // HTML
-    shortDescription: '',    // HTML
-    longDescription: '',
-    thumbnail: '',
-    images: []
-    };
+initializeNews();
+console.log("setting it up");
 
-// app.post('api/news', (req, res) =>{
-//     console.log("post news: " + req.body);
-//     addNews(req.body);
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.send(responseData);
+// .then(()=>{
+//     getNews();
+// })
+// .then(news =>{
+//     console.log("got new news: " + news); 
+
 // });
 
-const addNews = (newsRequest) => {
-    console.log("adding news: " + newsRequest);
-    if(responseData.length >= maxNewsCount){
-        // remove oldest news
-        console.log('remove oldest news');
-        responseData.shift();
-        console.log(responseData.length);
-    }
+// addNews("news numma 2!", "und noch eine wie geiiiil");
 
-    if(isValid(newsRequest)){
-        responseData.push(newsRequest);
-    }
-}
-
-const isValid = (candidate) =>{
-    for (let property in exampleMatch) {
-        if (!candidate.hasOwnProperty(property)) {
-            console.log("invalid news item. missing property: " + property); 
-        }
-    }
-
-
-}
-
-
-// listen
-const port = 8080;
-
-app.listen(process.env.PORT || port, () => {
-    console.log(`-> listening on port ${port}`);
-});
-
+// ------------------------------------------------------------------------
 // static news feed 
 const responseData = [{
     id: '1',
