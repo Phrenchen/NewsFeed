@@ -89,10 +89,12 @@ async function deleteOldNews() {
         `)
     .then(() => {
         console.log("deleted all news");
+        client.release();
         return true;
     }).catch(e => {
         console.log("error deleting news");
         console.log(e);
+        client.release();
         return false;
     });
     console.log("aha");
@@ -129,9 +131,11 @@ async function getNews() {
                 // success
                 console.log("got news from postgres!");
                 console.log(data.length);
+                client.release();
                 return data;
             }).catch(e => {
                 console.log("error catch ");
+                client.release();
             });
         // return await db.any('SELECT * FROM news', [true])
             // .then(data => {
@@ -159,12 +163,14 @@ async function addNews(title, shortDescription, longDescription, thumbnail, imag
     .then(() => {
         // success;
         console.log("success adding newsitem!");
+        client.release();
         return true;
     })
     .catch(error => {
         // error;
         console.log("error adding newsitem!");
         console.log(error);
+        client.release();
         return false;
     });
     /*
