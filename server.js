@@ -1,7 +1,9 @@
 var express = require('express');
 const path = require('path');
 const uuid = require('uuid');
+const { Pool } = require('pg');
 var pgp = require('pg-promise')(/* options */);
+
 
 var app = express();
 // var db = pgp('postgres://username:password@host:port/database');
@@ -10,11 +12,17 @@ var app = express();
 // var db = pgp("postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed");
 
 
-var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed";
-console.log("db url:  " + dbUrl);
-var db = pgp(dbUrl);
 app.use(express.static(__dirname + "/dist/news-feed"));
 
+
+var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed";
+console.log("db url:  " + dbUrl);
+// var db = pgp(dbUrl);
+
+const pool = new Pool({
+    connectionString: dbUrl,
+    ssl: false
+});
 
 
 
@@ -32,15 +40,25 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
 });
 
-app.get('/api/news', (req, res) =>{
-    getNews()
-        .then(result =>{
-            console.log("received result: " + result);
-            console.log(result.length);
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.send(result);
-        });
-    });
+app.get('/api/news', async (req, res) =>{
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.send("no nus");
+    const client = await pool.connect();
+    const result = await client.query('SELECT * FROM news');
+    const newsResults = result.rows;
+    console.log(newsResults);
+    res.send(newsResults);
+    client.release();
+    console.log("sent and released. done!");
+});
+    // getNews()
+    //     .then(result =>{
+    //         console.log("received result: " + result);
+    //         console.log(result.length);
+    //         res.setHeader('Access-Control-Allow-Origin', '*');
+    //         res.send(result);
+    //     });
+    // });
     
 app.get('/api/dbtest', (req, res) => {
     console.log("requested db test");
@@ -55,6 +73,30 @@ app.get('/api/dbtest', (req, res) => {
 // POSTGRESQL
 async function deleteOldNews() {
     // return await db.any(`DROP TABLE news CREATE TABLE news`)
+    const client = await pool.connect();
+    const result = await client.query(`DROP TABLE IF EXISTS news; CREATE TABLE news
+        (
+        id uuid NOT NULL,
+        title text,
+        shortdescription text,
+        longdescription text,
+        images text[],
+        thumbnail text,
+        CONSTRAINT news_id PRIMARY KEY (id)
+        );
+        ALTER TABLE news
+        OWNER TO defaultuser;
+        `)
+    .then(() => {
+        console.log("deleted all news");
+        return true;
+    }).catch(e => {
+        console.log("error deleting news");
+        console.log(e);
+        return false;
+    });
+    console.log("aha");
+    /*
     return await db.any(`DROP TABLE IF EXISTS news; CREATE TABLE news
     (
       id uuid NOT NULL,
@@ -76,19 +118,30 @@ async function deleteOldNews() {
             console.log(e);
             return false;
         });
+    */
 }
 
 async function getNews() {
     try{
-        return await db.any('SELECT * FROM news', [true])
+        const client = await pool.connect();
+        const result = await client.query(`SELECT * FROM news`)
             .then(data => {
                 // success
-                // console.log("got news from postgres!");
-                // console.log(data.length);
+                console.log("got news from postgres!");
+                console.log(data.length);
                 return data;
             }).catch(e => {
                 console.log("error catch ");
             });
+        // return await db.any('SELECT * FROM news', [true])
+            // .then(data => {
+            //     // success
+            //     console.log("got news from postgres!");
+            //     console.log(data.length);
+            //     return data;
+            // }).catch(e => {
+            //     console.log("error catch ");
+            // });
     }
     catch(e){
         console.log("error calling postgresq");
@@ -100,7 +153,21 @@ async function getNews() {
 // addNews("news numma 1!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
 async function addNews(title, shortDescription, longDescription, thumbnail, images) {
     const id = uuid();
-    
+    const client = await pool.connect();
+    console.log(images);
+    const result = await client.query("INSERT INTO news(id, title, shortDescription, longDescription, thumbnail, images) VALUES('" + id + "','" + title + "','" + shortDescription + "','" + longDescription + "','" + thumbnail + "','{" + images + "}')")
+    .then(() => {
+        // success;
+        console.log("success adding newsitem!");
+        return true;
+    })
+    .catch(error => {
+        // error;
+        console.log("error adding newsitem!");
+        console.log(error);
+        return false;
+    });
+    /*
     return db.none('INSERT INTO news(id, title, shortDescription, longDescription, thumbnail, images) VALUES($1, $2, $3, $4, $5, $6)', 
         [id, title, shortDescription, longDescription, thumbnail, images]
         ).then(() => {
@@ -114,6 +181,7 @@ async function addNews(title, shortDescription, longDescription, thumbnail, imag
             console.log(error);
             return false;
         });
+    */
 }
 // POSTGRESQL end
 
@@ -121,6 +189,7 @@ async function addNews(title, shortDescription, longDescription, thumbnail, imag
 async function initializeNews() {
     await deleteOldNews();
     console.log("deleted old news");
+    await getNews();
     await addNews(
         "cat content", 
         "interested in cat content?", 

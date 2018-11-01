@@ -25,7 +25,8 @@ export class NewsService {
     const endpoint = NewsService.getEndPointBase() + NewsService.dbtest;
     return Axios.get(endpoint)
       .then((response: AxiosResponse<any>) => {
-        console.log('received test data: ' + response.data);
+        console.log('received test data: ');
+        console.log(response.data);
         return response.data;
 
       })
