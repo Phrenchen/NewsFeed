@@ -26,7 +26,11 @@ export class NewsFeedComponent implements OnInit {
   }
 
   private async getNews() {
+    const responseTest = await this.newsService.testEnvironment();
+    console.log('response test answered ');
+    console.log(responseTest);
     const response = await this.newsService.requestNews();
+
 
     try {
       this.news = response;

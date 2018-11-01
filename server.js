@@ -17,6 +17,41 @@ app.use(express.static(__dirname + "/dist/news-feed"));
 
 
 
+
+
+// listen
+const port = 8080;
+
+app.listen(process.env.PORT || port, () => {
+    console.log(`-> listening on port ${port}`);
+});
+
+app.get('/', (req, res) => {
+    // console.log("get root"); 
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
+});
+
+app.get('/api/news', (req, res) =>{
+    getNews()
+        .then(result =>{
+            console.log("received result: " + result);
+            console.log(result.length);
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.send(result);
+        });
+    });
+    
+app.get('/api/dbtest', (req, res) => {
+    console.log("requested db test");
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.send('process.env.DATABASE_URL: ' + process.env.DATABASE_URL);
+});
+
+
+
+
+// helper
 // POSTGRESQL
 async function deleteOldNews() {
     // return await db.any(`DROP TABLE news CREATE TABLE news`)
@@ -48,8 +83,8 @@ async function getNews() {
         return await db.any('SELECT * FROM news', [true])
             .then(data => {
                 // success
-                console.log("got news from postgres!");
-                console.log(data.length);
+                // console.log("got news from postgres!");
+                // console.log(data.length);
                 return data;
             }).catch(e => {
                 console.log("error catch ");
@@ -82,33 +117,10 @@ async function addNews(title, shortDescription, longDescription, thumbnail, imag
 }
 // POSTGRESQL end
 
-// listen
-const port = 8080;
-
-app.listen(process.env.PORT || port, () => {
-    console.log(`-> listening on port ${port}`);
-});
-
-app.get('/', (req, res) => {
-    // console.log("get root"); 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
-});
-
-app.get('/api/news', (req, res) =>{
-    getNews()
-        .then(result =>{
-            console.log("received result: " + result);
-            console.log(result.length);
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.send(result);
-        });
-});
-
-
 
 async function initializeNews() {
     await deleteOldNews();
+    console.log("deleted old news");
     await addNews(
         "cat content", 
         "interested in cat content?", 
