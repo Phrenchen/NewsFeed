@@ -45,10 +45,10 @@ app.get('/api/news', async (req, res) =>{
     // res.send("no nus");
     const client = await pool.connect();
     const result = await client.query('SELECT * FROM news');
+    client.release();
     const newsResults = result.rows;
     console.log(newsResults);
     res.send(newsResults);
-    client.release();
     console.log("sent and released. done!");
 });
     // getNews()
