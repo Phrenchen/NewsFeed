@@ -45,7 +45,7 @@ app.get('/api/news', (req, res) =>{
 app.get('/api/dbtest', (req, res) => {
     console.log("requested db test");
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send('process.env.DATABASE_URL: ' + process.env.DATABASE_URL);
+    res.send(process.env);
 });
 
 
