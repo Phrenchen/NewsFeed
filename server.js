@@ -8,14 +8,14 @@ var pgp = require('pg-promise')(/* options */);
 var app = express();
 // var db = pgp('postgres://username:password@host:port/database');
 // var dbUsername = process.env.DB_USER_NAME;  // defaultuser
-// var dbPassword = process.env.DB_PASSWORD;   // 1u2MtKAZBHouW5H2FWg1
-// var db = pgp("postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed");
+// var dbPassword = process.env.DB_PASSWORD;   // 1u2MtKAZBHouW5
+// var db = pgp("postgres://defaultuser:1u2MtKAZBHouW5@localhost:5432/NewsFeed");
 
 
 app.use(express.static(__dirname + "/dist/news-feed"));
 
-
-var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5H2FWg1@localhost:5432/NewsFeed";
+// postgres://yfsawoxbctupqs:1a30c5b81059ff3833c58c18b998a6e2535c0d20063e5b9e7b395529ab616a6a@ec2-79-125-8-105.eu-west-1.compute.amazonaws.com:5432/d1l94i9ms624ph
+var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5@localhost:5432/NewsFeed";
 console.log("db url:  " + dbUrl);
 // var db = pgp(dbUrl);
 
@@ -75,6 +75,15 @@ async function initDB() {
         console.log("connected");
         await client.query(`DROP TABLE IF EXISTS news;`);
         console.log("dropped table news");
+        try{
+            await client.query(`CREATE USER defaultuser WITH CREATEDB`);
+        }
+        catch(e){
+            console.log("error creating user.");
+            console.log(e);
+        }
+        console.log("created user");
+
         await client.query(`CREATE TABLE news
         (
             id uuid NOT NULL,
@@ -127,8 +136,8 @@ async function getNews() {
     try{
         const client = await pool.connect();
         const result = await client.query(`SELECT * FROM news`)
-        console.log(result);
-        console.log(result.fields);
+        // console.log(result);
+        // console.log(result.fields);
         console.log(result.rows.length);
         // return await db.any('SELECT * FROM news', [true])
             // .then(data => {
