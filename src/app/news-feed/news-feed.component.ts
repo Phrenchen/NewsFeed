@@ -26,14 +26,11 @@ export class NewsFeedComponent implements OnInit {
   }
 
   private async getNews() {
-    const responseTest = await this.newsService.testEnvironment();
-    console.log('response test answered ');
-    console.log(responseTest);
     const response = await this.newsService.requestNews();
-
 
     try {
       this.news = response;
+      console.log('received news: ' + this.news.length);
     } catch (e) {
       console.log('failed assigning response to news array');
       this.news = [];

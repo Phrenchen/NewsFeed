@@ -60,11 +60,6 @@ app.get('/api/news', async (req, res) =>{
     //     });
     // });
     
-app.get('/api/dbtest', (req, res) => {
-    console.log("requested db test");
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send(process.env);
-});
 
 
 
@@ -73,23 +68,35 @@ app.get('/api/dbtest', (req, res) => {
 // POSTGRESQL
 async function initDB() {
     // return await db.any(`DROP TABLE news CREATE TABLE news`)
-    const client = await pool.connect();
-    await client.query(`DROP TABLE IF EXISTS news;`);
-    await client.query(`CREATE TABLE news
-    (
-    id uuid NOT NULL,
-    title text,
-    shortdescription text,
-    longdescription text,
-    images text[],
-    thumbnail text,
-    CONSTRAINT news_id PRIMARY KEY (id)
-    );
-    ALTER TABLE news
-    OWNER TO defaultuser;
-    `);
+    try{
 
-    await client.release();
+        console.log("initializing db");
+        const client = await pool.connect();
+        console.log("connected");
+        await client.query(`DROP TABLE IF EXISTS news;`);
+        console.log("dropped table news");
+        await client.query(`CREATE TABLE news
+        (
+            id uuid NOT NULL,
+            title text,
+            shortdescription text,
+            longdescription text,
+            images text[],
+            thumbnail text,
+            CONSTRAINT news_id PRIMARY KEY (id)
+            );
+            ALTER TABLE news
+            OWNER TO defaultuser;
+            `);
+        console.log("created table news");
+        
+        await client.release();
+        console.log("released client");
+    }
+    catch(e){
+        console.log("error initializing db.");
+        console.log(e);
+    }
 
     /*
     return await db.any(`DROP TABLE IF EXISTS news; CREATE TABLE news
@@ -122,7 +129,7 @@ async function getNews() {
         const result = await client.query(`SELECT * FROM news`)
         console.log(result);
         console.log(result.fields);
-        console.log(result.rows);
+        console.log(result.rows.length);
         // return await db.any('SELECT * FROM news', [true])
             // .then(data => {
             //     // success

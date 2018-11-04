@@ -20,22 +20,6 @@ export class NewsService {
 
   constructor() { }
 
-  // testing
-  public testEnvironment(): Promise<any> {
-    const endpoint = NewsService.getEndPointBase() + NewsService.dbtest;
-    return Axios.get(endpoint)
-      .then((response: AxiosResponse<any>) => {
-        console.log('received test data: ');
-        console.log(response.data);
-        return response.data;
-
-      })
-      .catch(error => {
-        console.log('error: ' + error);
-        return [];
-      });
-  }
-
 
   /**
    * returns NewsItem[]
