@@ -109,7 +109,6 @@ async function initializeNews() {
             []
             
         );
-    await addNews("news numma 3!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
 }
 
 // run on start
