@@ -107,8 +107,14 @@ async function initializeNews() {
             '<div><a href="https://www.youtube.com/watch?v=3bhP7zulFfY" target="_blank">AI plays Snake</a> </div>', 
             "/assets/images/ai_snake_game.png", 
             []
-            
         );
+        await addNews(
+            "Moin Snoozi :)",
+            "wie wärs mit einer gemeinsamen spielwiese? :)",
+            "",
+            "/assets/images/happy_cat.jpg", 
+            []
+        )
 }
 
 // run on start
