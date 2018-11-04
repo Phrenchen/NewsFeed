@@ -75,14 +75,14 @@ async function initDB() {
         console.log("connected");
         await client.query(`DROP TABLE IF EXISTS news;`);
         console.log("dropped table news");
-        try{
-            await client.query(`CREATE USER defaultuser WITH CREATEDB`);
-        }
-        catch(e){
-            console.log("error creating user.");
-            console.log(e);
-        }
-        console.log("created user");
+        // try{
+        //     await client.query(`CREATE USER defaultuser WITH CREATEDB`);
+        // }
+        // catch(e){
+        //     console.log("error creating user.");
+        //     console.log(e);
+        // }
+        // console.log("created user");
 
         await client.query(`CREATE TABLE news
         (
@@ -94,8 +94,6 @@ async function initDB() {
             thumbnail text,
             CONSTRAINT news_id PRIMARY KEY (id)
             );
-            ALTER TABLE news
-            OWNER TO defaultuser;
             `);
         console.log("created table news");
         
@@ -107,29 +105,6 @@ async function initDB() {
         console.log(e);
     }
 
-    /*
-    return await db.any(`DROP TABLE IF EXISTS news; CREATE TABLE news
-    (
-      id uuid NOT NULL,
-      title text,
-      shortdescription text,
-      longdescription text,
-      images text[],
-      thumbnail text,
-      CONSTRAINT news_id PRIMARY KEY (id)
-    );
-    ALTER TABLE news
-      OWNER TO defaultuser;
-    `)
-        .then(() => {
-            console.log("deleted all news");
-            return true;
-        }).catch(e => {
-            console.log("error deleting news");
-            console.log(e);
-            return false;
-        });
-    */
 }
 
 async function getNews() {
