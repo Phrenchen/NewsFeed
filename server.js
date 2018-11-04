@@ -71,33 +71,26 @@ app.get('/api/dbtest', (req, res) => {
 
 // helper
 // POSTGRESQL
-async function deleteOldNews() {
+async function initDB() {
     // return await db.any(`DROP TABLE news CREATE TABLE news`)
     const client = await pool.connect();
-    const result = await client.query(`DROP TABLE IF EXISTS news; CREATE TABLE news
-        (
-        id uuid NOT NULL,
-        title text,
-        shortdescription text,
-        longdescription text,
-        images text[],
-        thumbnail text,
-        CONSTRAINT news_id PRIMARY KEY (id)
-        );
-        ALTER TABLE news
-        OWNER TO defaultuser;
-        `)
-    .then(() => {
-        console.log("deleted all news");
-        client.release();
-        return true;
-    }).catch(e => {
-        console.log("error deleting news");
-        console.log(e);
-        client.release();
-        return false;
-    });
-    console.log("aha");
+    await client.query(`DROP TABLE IF EXISTS news;`);
+    await client.query(`CREATE TABLE news
+    (
+    id uuid NOT NULL,
+    title text,
+    shortdescription text,
+    longdescription text,
+    images text[],
+    thumbnail text,
+    CONSTRAINT news_id PRIMARY KEY (id)
+    );
+    ALTER TABLE news
+    OWNER TO defaultuser;
+    `);
+
+    await client.release();
+
     /*
     return await db.any(`DROP TABLE IF EXISTS news; CREATE TABLE news
     (
@@ -127,16 +120,9 @@ async function getNews() {
     try{
         const client = await pool.connect();
         const result = await client.query(`SELECT * FROM news`)
-            .then(data => {
-                // success
-                console.log("got news from postgres!");
-                console.log(data.length);
-                client.release();
-                return data;
-            }).catch(e => {
-                console.log("error catch ");
-                client.release();
-            });
+        console.log(result);
+        console.log(result.fields);
+        console.log(result.rows);
         // return await db.any('SELECT * FROM news', [true])
             // .then(data => {
             //     // success
@@ -158,7 +144,7 @@ async function getNews() {
 async function addNews(title, shortDescription, longDescription, thumbnail, images) {
     const id = uuid();
     const client = await pool.connect();
-    console.log(images);
+    // console.log(images);
     const result = await client.query("INSERT INTO news(id, title, shortDescription, longDescription, thumbnail, images) VALUES('" + id + "','" + title + "','" + shortDescription + "','" + longDescription + "','" + thumbnail + "','{" + images + "}')")
     .then(() => {
         // success;
@@ -193,7 +179,7 @@ async function addNews(title, shortDescription, longDescription, thumbnail, imag
 
 
 async function initializeNews() {
-    await deleteOldNews();
+    await initDB();
     console.log("deleted old news");
     await getNews();
     await addNews(
@@ -203,14 +189,16 @@ async function initializeNews() {
         "/assets/images/happy_cat.jpg", 
         ["explosionkitty.jpeg", "lazycat.png", "mr_mustache.jpg", "ohnoes.jpg", "surprisedcat3.jpg", "tshirt.jpeg"]
         );
-    await addNews(
-        "AI plays Snake", 
-        "youtube", 
-        '<div><a href="https://www.youtube.com/watch?v=3bhP7zulFfY" target="_blank">AI plays Snake</a> </div>', 
-        "/assets/images/ai_snake_game.png", 
-        []
+        await addNews(
+            "AI plays Snake", 
+            "youtube", 
+            '<div><a href="https://www.youtube.com/watch?v=3bhP7zulFfY" target="_blank">AI plays Snake</a> </div>', 
+            "/assets/images/ai_snake_game.png", 
+            []
+            
         );
     await addNews("news numma 3!", "aaaaaldaaaaa short description adla!", "long description", "thumbnail", []);
+    await getNews();
 }
 
 // run on start
