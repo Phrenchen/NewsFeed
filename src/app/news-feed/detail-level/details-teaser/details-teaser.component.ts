@@ -35,10 +35,10 @@ export class DetailsTeaserComponent implements OnInit {
   }
 
   public get shortDescription(): string {
-    return this.news ? this.news.shortDescription : 'no short description';
+    return this.news ? this.news.shortdescription : 'no short description';
   }
 
   public get longDescription(): string {
-    return this.news ? this.news.longDescription : 'no long description';
+    return this.news ? this.news.longdescription : 'no long description';
   }
 }

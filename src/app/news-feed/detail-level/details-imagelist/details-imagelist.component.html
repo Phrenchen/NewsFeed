@@ -1,0 +1,6 @@
+<div *ngIf="hasImageList"
+  class="image-list">
+  <img *ngFor="let image of news.images" 
+    src="assets/images/{{image}}" alt=""
+  />
+</div>

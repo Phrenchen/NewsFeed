@@ -26,8 +26,8 @@ export interface NewsItem {
 
     // content
     title: string;                  // HTML
-    shortDescription: string;       // HTML
-    longDescription: string;        // HTML
+    shortdescription: string;       // HTML
+    longdescription: string;        // HTML
     thumbnail: string;
     images: string[];
 

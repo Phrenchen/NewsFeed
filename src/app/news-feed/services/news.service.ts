@@ -71,8 +71,8 @@ export class NewsService {
 
       // content
       title: title,                  // HTML
-      shortDescription: shortDescription,       // HTML
-      longDescription: 'loooong: ' + shortDescription,        // HTML
+      shortdescription: shortDescription,       // HTML
+      longdescription: 'loooong: ' + shortDescription,        // HTML
       thumbnail: null,
       images: []
     };

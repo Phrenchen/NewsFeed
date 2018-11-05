@@ -24,6 +24,10 @@
   [news]="selectedItem"
 ></app-details-long>
 
+<app-details-imagelist *ngIf="showLongVersion"
+  [news]="selectedItem"
+></app-details-imagelist>
+
 <!--
 <app-news-item class="selected-item-details" *ngIf="hasSelectedItem()"
   [item]="selectedItem"
