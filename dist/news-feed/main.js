@@ -23,6 +23,69 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 
 /***/ }),
 
+/***/ "./src/app/a-test-page/a-test-page.component.css":
+/*!*******************************************************!*\
+  !*** ./src/app/a-test-page/a-test-page.component.css ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\r\n.quote{\r\n    margin-bottom: 5rem;\r\n}\r\n\r\nimg{\r\n    max-width: 10rem;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/a-test-page/a-test-page.component.html":
+/*!********************************************************!*\
+  !*** ./src/app/a-test-page/a-test-page.component.html ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- Add your site or application content here -->\r\n<header role=\"banner\" class=\"banner clearfix\" id=\"banner\">\r\n  <div class=\"section-content\">\r\n    <div class=\"branding clearfix\">\r\n    </div>\r\n  </div>\r\n</header>\r\n\r\n<main class=\"content-area clearfix\">\r\n  <div class=\"section-content\">\r\n    <article class=\"article-detail initial\">\r\n      <h1>Some quotes that made me think :)</h1>\r\n      <h2>Computer</h2>\r\n      <p>Quotes related to computers, programming and games :)</p>\r\n      <p>Since the idea of letting a machine solve tasks for us humans, the world has changed in every thinkable way. Clever people have expressed thoughts and predictions related to computers.</p>\r\n      <p>.</p>\r\n      <!-- <div class=\"figure-wrapper\"><figure class=\"goblet\">\r\n          <img src=\"assets/images/goblet.png\" alt=\"A crystal goblet\" />\r\n        </figure>\r\n      </div> -->\r\n      <div class=\"quote\">\r\n        <p><span class=\"well-used\">\"The most dangerous phrase in the language is, 'We’ve always done it this way.\"</span></p>\r\n        <span class=\"well-used\">( Grace Hopper </span>, 1906 - 1992 <span class=\"well-used\">)</span>\r\n      </div>\r\n      <div class=\"quote\">\r\n        <p><span class=\"well-used\">\"Keep it simple, stupid\"</span></p>\r\n        <span class=\"well-used\">( Clarence Johnson </span>, 1910 - 1990 <span class=\"well-used\">)</span>\r\n      </div>\r\n      \r\n      <div class=\"quote\">\r\n        <p><span class=\"well-used\">\"The result of my reflections has been that numbers containing more than thirty places of figures will not be required for a long time to come.\"</span></p>\r\n        <span class=\"well-used\">( Charles Babbage </span>, 1791 – 1871 <span class=\"well-used\">)</span>\r\n        <span><img src=\"assets/images/charles_babbage.png\"></span>\r\n      </div>\r\n      \r\n      <div class=\"quote\">\r\n        <p><span class=\"well-used\">\"Science knows no country, because knowledge belongs to humanity, and is the torch which illuminates the world.\"</span></p>\r\n        <span class=\"well-used\">( Louis Pasteur </span>, 1822 - 1895 <span class=\"well-used\">)</span>\r\n      </div>\r\n      <div class=\"quote\">\r\n        <p><span class=\"well-used\"></span></p>\r\n        <span class=\"well-used\"></span>\r\n      </div>\r\n\r\n    </article>\r\n  </div><!--/.section-content-->\r\n</main>\r\n<footer id=\"footer\" class=\"footer clearfix\" role=\"contentinfo\">\r\n  <div class=\"section-content\">\r\n    <div class=\"footer-contact h-card\">\r\n      <p>sources:</p>\r\n      <p><a href=\"https://de.wikipedia.org/wiki/Charles_Babbage\" target=\"_blank\">Wikipedia: Charles Babbage</a></p>\r\n      <p><a href=\"https://thenextweb.com/shareables/2013/09/18/the-very-first-computer-bug/\" target=\"_blank\">The Next Web: The very first computer bug</a></p>\r\n      <p><a href=\"https://de.wikipedia.org/wiki/Grace_Hopper\" target=\"_blank\">Wikipedia: Grace Hopper, computer scientist and pioneer</a></p>\r\n      <p><a href=\"https://de.wikipedia.org/wiki/Clarence_Johnson\" target=\"_blank\">Wikipedia: Clarence Johnson, Engineer</a></p>\r\n\r\n    </div>\r\n  </div><!--/.section-content-->\r\n</footer>"
+
+/***/ }),
+
+/***/ "./src/app/a-test-page/a-test-page.component.ts":
+/*!******************************************************!*\
+  !*** ./src/app/a-test-page/a-test-page.component.ts ***!
+  \******************************************************/
+/*! exports provided: ATestPageComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ATestPageComponent", function() { return ATestPageComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ATestPageComponent = /** @class */ (function () {
+    function ATestPageComponent() {
+    }
+    ATestPageComponent.prototype.ngOnInit = function () {
+    };
+    ATestPageComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-a-test-page',
+            template: __webpack_require__(/*! ./a-test-page.component.html */ "./src/app/a-test-page/a-test-page.component.html"),
+            styles: [__webpack_require__(/*! ./a-test-page.component.css */ "./src/app/a-test-page/a-test-page.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], ATestPageComponent);
+    return ATestPageComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/app.component.css":
 /*!***********************************!*\
   !*** ./src/app/app.component.css ***!
@@ -30,7 +93,7 @@ webpackEmptyAsyncContext.id = "./src/$$_lazy_route_resource lazy recursive";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "body{\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.app-head{\r\n    text-align: center;\r\n}\r\n\r\n\r\n#container{\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}\r\n\r\n"
+module.exports = "body{\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r\n    overflow: hidden;\r\n}\r\n\r\n\r\n.app-head{\r\n    text-align: center;\r\n}"
 
 /***/ }),
 
@@ -41,7 +104,7 @@ module.exports = "body{\r\n    padding: 0;\r\n    margin: 0;\r\n    border: 0;\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"app-head\">\r\n  <h1>nonsense with lists of things</h1>\r\n  <p></p>\r\n</div>\r\n\r\n  <div id=\"container\">\r\n    <div id=\"hudBar\" class=\"hudBar\">\r\n    </div>\r\n    <!-- <app-context-menu\r\n      (actionSelected)=\"contextActionSelected($event)\"\r\n    ></app-context-menu> -->\r\n    \r\n    <!-- <app-action-bar id=\"action-bar\"\r\n      (actionSelected)=\"onActionSelected($event)\"\r\n    ></app-action-bar> -->\r\n    \r\n    <app-news-feed id=\"news-feed\"></app-news-feed>\r\n\r\n    <!-- <app-image-card-list id=\"image-card-list\"\r\n    [images]=\"images\"\r\n    (imageSelected)=\"componentSelected($event)\"\r\n    ></app-image-card-list> -->\r\n\r\n  </div>\r\n\r\n          <!-- <app-ticker></app-ticker> -->\r\n "
+module.exports = "<div class=\"app-head\">\r\n  <!-- <h1>nonsense with lists of things</h1> -->\r\n  <p></p>\r\n</div>\r\n\r\n  <div id=\"container\">\r\n    <div id=\"hudBar\" class=\"hudBar\">\r\n    </div>\r\n    <!-- <app-context-menu\r\n      (actionSelected)=\"contextActionSelected($event)\"\r\n    ></app-context-menu> -->\r\n    \r\n    <!-- <app-action-bar id=\"action-bar\"\r\n      (actionSelected)=\"onActionSelected($event)\"\r\n    ></app-action-bar> -->\r\n    \r\n    <app-a-test-page></app-a-test-page>\r\n    <br/>\r\n    <hr>\r\n    <br/>\r\n    <app-news-feed id=\"news-feed\"></app-news-feed>\r\n\r\n    <!-- <app-image-card-list id=\"image-card-list\"\r\n    [images]=\"images\"\r\n    (imageSelected)=\"componentSelected($event)\"\r\n    ></app-image-card-list> -->\r\n\r\n  </div>\r\n\r\n          <!-- <app-ticker></app-ticker> -->\r\n "
 
 /***/ }),
 
@@ -164,12 +227,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _image_card_image_card_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./image-card/image-card.component */ "./src/app/image-card/image-card.component.ts");
 /* harmony import */ var _image_card_list_image_card_list_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./image-card-list/image-card-list.component */ "./src/app/image-card-list/image-card-list.component.ts");
 /* harmony import */ var _context_menu_context_menu_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./context-menu/context-menu.component */ "./src/app/context-menu/context-menu.component.ts");
+/* harmony import */ var _news_feed_detail_level_details_imagelist_details_imagelist_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./news-feed/detail-level/details-imagelist/details-imagelist.component */ "./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.ts");
+/* harmony import */ var _a_test_page_a_test_page_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./a-test-page/a-test-page.component */ "./src/app/a-test-page/a-test-page.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -203,7 +270,9 @@ var AppModule = /** @class */ (function () {
                 _news_feed_action_bar_action_bar_component__WEBPACK_IMPORTED_MODULE_10__["ActionBarComponent"],
                 _image_card_image_card_component__WEBPACK_IMPORTED_MODULE_13__["ImageCardComponent"],
                 _image_card_list_image_card_list_component__WEBPACK_IMPORTED_MODULE_14__["ImageCardListComponent"],
-                _context_menu_context_menu_component__WEBPACK_IMPORTED_MODULE_15__["ContextMenuComponent"]
+                _context_menu_context_menu_component__WEBPACK_IMPORTED_MODULE_15__["ContextMenuComponent"],
+                _news_feed_detail_level_details_imagelist_details_imagelist_component__WEBPACK_IMPORTED_MODULE_16__["DetailsImagelistComponent"],
+                _a_test_page_a_test_page_component__WEBPACK_IMPORTED_MODULE_17__["ATestPageComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"]
@@ -248,7 +317,7 @@ var ContextMenuConsts = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".actionmenu_grid{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    position: absolute;\r\n    text-decoration:none;\r\n\r\n    -ms-grid-columns:  1fr 1fr 1fr 1fr;\r\n\r\n        grid-template-columns:  1fr 1fr 1fr 1fr;\r\n    -ms-grid-rows: min-content auto min-content;\r\n        grid-template-rows: -webkit-min-content auto -webkit-min-content;\r\n        grid-template-rows: min-content auto min-content;\r\n    border: 1px solid red;\r\n    \r\n    max-width: 300px;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n\r\n    grid-gap: 10px 20px;\r\n    user-select: none;\r\n}\r\n\r\n\r\n.actionmenu_button{\r\n    padding: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\nbutton:hover{\r\n    color: #ff0000;\r\n}\r\n\r\n\r\n.actionmenu_button_delete{\r\n    -ms-grid-column: 1;\r\n    -ms-grid-column-span: 2;\r\n    grid-column: 1 / 3;\r\n    -ms-grid-row: 1;\r\n    -ms-grid-row-span: 1;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n.actionmenu_button_clone{\r\n    -ms-grid-column: 3;\r\n    -ms-grid-column-span: 2;\r\n    grid-column: 3 / 5;\r\n    -ms-grid-row: 1;\r\n    -ms-grid-row-span: 1;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n.actionmenu_button_mark{\r\n    -ms-grid-column: 2;\r\n    -ms-grid-column-span: 2;\r\n    grid-column: 2 / 4;\r\n    -ms-grid-row: 3;\r\n    -ms-grid-row-span: 1;\r\n    grid-row: 3 / 4;\r\n}   "
+module.exports = ".actionmenu_grid{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    position: absolute;\r\n    text-decoration:none;\r\n\r\n    -ms-grid-columns:  1fr 1fr 1fr 1fr;\r\n\r\n        grid-template-columns:  1fr 1fr 1fr 1fr;\r\n    -ms-grid-rows: min-content auto min-content;\r\n        grid-template-rows: -webkit-min-content auto -webkit-min-content;\r\n        grid-template-rows: min-content auto min-content;\r\n    border: 1px solid red;\r\n    \r\n    max-width: 300px;\r\n\r\n    grid-gap: 10px 20px;\r\n}\r\n\r\n\r\n.actionmenu_button{\r\n    padding: 5px;\r\n    cursor: pointer;\r\n}\r\n\r\n\r\nbutton:hover{\r\n    color: #ff0000;\r\n}\r\n\r\n\r\n.actionmenu_button_delete{\r\n    -ms-grid-column: 1;\r\n    -ms-grid-column-span: 2;\r\n    grid-column: 1 / 3;\r\n    -ms-grid-row: 1;\r\n    -ms-grid-row-span: 1;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n.actionmenu_button_clone{\r\n    -ms-grid-column: 3;\r\n    -ms-grid-column-span: 2;\r\n    grid-column: 3 / 5;\r\n    -ms-grid-row: 1;\r\n    -ms-grid-row-span: 1;\r\n    grid-row: 1 / 2;\r\n}\r\n\r\n\r\n.actionmenu_button_mark{\r\n    -ms-grid-column: 2;\r\n    -ms-grid-column-span: 2;\r\n    grid-column: 2 / 4;\r\n    -ms-grid-row: 3;\r\n    -ms-grid-row-span: 1;\r\n    grid-row: 3 / 4;\r\n}   "
 
 /***/ }),
 
@@ -532,7 +601,7 @@ var ImageCardListComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "h1 {\r\n    font-size: 1em;\r\n}\r\n\r\nimg{\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}"
+module.exports = "h1 {\r\n    font-size: 1em;\r\n}"
 
 /***/ }),
 
@@ -682,6 +751,80 @@ var ActionBarComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.css":
+/*!******************************************************************************************!*\
+  !*** ./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.css ***!
+  \******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".image-list{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));\r\n    grid-gap: 5px;\r\n    width: 100%;\r\n    align-items: center;\r\n    justify-items: center;\r\n}\r\n\r\nimg{\r\n    max-width: 150px;\r\n}"
+
+/***/ }),
+
+/***/ "./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.html":
+/*!*******************************************************************************************!*\
+  !*** ./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.html ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"hasImageList\"\r\n  class=\"image-list\">\r\n  <img *ngFor=\"let image of news.images\" \r\n    src=\"assets/images/{{image}}\" alt=\"\"\r\n  />\r\n</div>"
+
+/***/ }),
+
+/***/ "./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.ts":
+/*!*****************************************************************************************!*\
+  !*** ./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.ts ***!
+  \*****************************************************************************************/
+/*! exports provided: DetailsImagelistComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DetailsImagelistComponent", function() { return DetailsImagelistComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DetailsImagelistComponent = /** @class */ (function () {
+    function DetailsImagelistComponent() {
+    }
+    DetailsImagelistComponent.prototype.ngOnInit = function () {
+    };
+    Object.defineProperty(DetailsImagelistComponent.prototype, "hasImageList", {
+        get: function () {
+            return this.news.images.length > 0;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
+        __metadata("design:type", Object)
+    ], DetailsImagelistComponent.prototype, "news", void 0);
+    DetailsImagelistComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-details-imagelist',
+            template: __webpack_require__(/*! ./details-imagelist.component.html */ "./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.html"),
+            styles: [__webpack_require__(/*! ./details-imagelist.component.css */ "./src/app/news-feed/detail-level/details-imagelist/details-imagelist.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], DetailsImagelistComponent);
+    return DetailsImagelistComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/news-feed/detail-level/details-long/details-long.component.css":
 /*!********************************************************************************!*\
   !*** ./src/app/news-feed/detail-level/details-long/details-long.component.css ***!
@@ -689,7 +832,7 @@ var ActionBarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "image-list{\r\n    display: -ms-grid;\r\n    display: grid;\r\n    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));\r\n}\r\n\r\n#long-stuff{\r\n    /* border: 1px solid black; */\r\n    margin-right: 10px;\r\n    padding: 5px 5px 5px 5px;\r\n}\r\n\r\nimg{\r\n    max-width: 100%;\r\n    max-height: 100%;\r\n}"
+module.exports = "#long-stuff{\r\n    /* border: 1px solid black; */\r\n    margin-right: 10px;\r\n    padding: 5px 5px 5px 5px;\r\n}\r\n\r\n"
 
 /***/ }),
 
@@ -700,7 +843,7 @@ module.exports = "image-list{\r\n    display: -ms-grid;\r\n    display: grid;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - complete content. possibly scrollable / multi-paged\n-->\n<div *ngIf=\"hasImageList\"\n  class=\"image-list\">\n  <img *ngFor=\"let image of news.images\" \n    src=\"images/{{image}}\" alt=\"\"\n  />\n</div>\n<div *ngIf=\"false\" id=\"long-stuff\"></div>\n"
+module.exports = "<!--\r\n  - complete content. possibly scrollable / multi-paged\r\n-->\r\n<!-- <div *ngIf=\"hasImageList\"\r\n  class=\"image-list\">\r\n  <img *ngFor=\"let image of news.images\" \r\n    src=\"assets/images/{{image}}\" alt=\"\"\r\n  />\r\n</div> -->\r\n<div id=\"long-stuff\"></div>\r\n"
 
 /***/ }),
 
@@ -736,16 +879,10 @@ var DetailsLongComponent = /** @class */ (function () {
     DetailsLongComponent.prototype.ngAfterViewInit = function () {
         var contentContainer = document.querySelector('#long-stuff');
         if (contentContainer) {
-            contentContainer.innerHTML = this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.longDescription);
+            console.log('write long html: ' + this.news.longdescription);
+            contentContainer.innerHTML = this.sanitizer.sanitize(_angular_core__WEBPACK_IMPORTED_MODULE_0__["SecurityContext"].HTML, this.news.longdescription);
         }
     };
-    Object.defineProperty(DetailsLongComponent.prototype, "hasImageList", {
-        get: function () {
-            return this.news.images.length > 0;
-        },
-        enumerable: true,
-        configurable: true
-    });
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
@@ -783,7 +920,7 @@ module.exports = ".details-short{\r\n    align-items: center;\r\n    justify-con
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - title + short description in 1 line\n-->\n<button>\n  <div clasS=\"details-short\">\n      <span class=\"title\" id=\"title_{{news.id}}\">{{news.title}}</span>\n  </div>\n</button>"
+module.exports = "<!--\r\n  - title + short description in 1 line\r\n-->\r\n<button>\r\n  <div clasS=\"details-short\">\r\n      <span class=\"title\" id=\"title_{{news.id}}\">{{news.title}}</span>\r\n  </div>\r\n</button>"
 
 /***/ }),
 
@@ -865,7 +1002,7 @@ module.exports = ".card{\r\n    width: auto;\r\n    /* cursor: pointer; */\r\n\r
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - card\n  - title + thumbnail short description\n  - click on teaser -> show long version\n-->\n<div class=\"card\"\n  \n>\n  <h4>{{title}}</h4> \n  <img class=\"teaser-thumbnail\" *ngIf=\"hasThumbnail\" src={{thumbnail}} alt=\"Avatar\" style=\"width:100%\" draggable=\"false\">\n  <button (click)=\"onTeaserClick()\">\n    <p>{{shortDescription}}</p>\n  </button>\n</div>"
+module.exports = "<!--\r\n  - card\r\n  - title + thumbnail short description\r\n  - click on teaser -> show long version\r\n-->\r\n<div class=\"card\"\r\n  \r\n>\r\n  <h4>{{title}}</h4> \r\n  <img class=\"teaser-thumbnail\" *ngIf=\"hasThumbnail\" src={{thumbnail}} alt=\"Avatar\" style=\"width:100%\" draggable=\"false\">\r\n  <button (click)=\"onTeaserClick()\">\r\n    <p>{{shortDescription}}</p>\r\n  </button>\r\n</div>"
 
 /***/ }),
 
@@ -923,14 +1060,14 @@ var DetailsTeaserComponent = /** @class */ (function () {
     });
     Object.defineProperty(DetailsTeaserComponent.prototype, "shortDescription", {
         get: function () {
-            return this.news ? this.news.shortDescription : 'no short description';
+            return this.news ? this.news.shortdescription : 'no short description';
         },
         enumerable: true,
         configurable: true
     });
     Object.defineProperty(DetailsTeaserComponent.prototype, "longDescription", {
         get: function () {
-            return this.news ? this.news.longDescription : 'no long description';
+            return this.news ? this.news.longdescription : 'no long description';
         },
         enumerable: true,
         configurable: true
@@ -1132,7 +1269,7 @@ module.exports = ".news-feed{\r\n    display: -ms-grid;\r\n    display: grid;\r\
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"news-feed\">\r\n  <!-- <app-favourite-bubble \r\n    class=\"hud-icon-favourite-bubble\"\r\n    [counter]=\"getUnreadFavouriteCount()\"\r\n  ></app-favourite-bubble> -->\r\n  <!-- <app-feed-bubble \r\n    class=\"hud-icon-feed-bubble\"\r\n    [counter]=\"getUnreadNewsCount()\"\r\n  ></app-feed-bubble> -->\r\n  <app-ticker \r\n    class=\"hud-icon-ticker\"\r\n    [news]=\"news\"\r\n    (itemClicked)=\"onTickerItemClick($event)\"\r\n  ></app-ticker>\r\n\r\n</div>\r\n\r\n<app-details-teaser class=\"selected-item-details\" *ngIf=\"hasSelectedItem\"\r\n  [news]=selectedItem\r\n  (teaserClicked)=\"onTeaserClick($event)\">\r\n</app-details-teaser>\r\n\r\n<app-details-long *ngIf=\"showLongVersion\"\r\n  [news]=\"selectedItem\"\r\n></app-details-long>\r\n\r\n<!--\r\n<app-news-item class=\"selected-item-details\" *ngIf=\"hasSelectedItem()\"\r\n  [item]=\"selectedItem\"\r\n></app-news-item>\r\n-->"
+module.exports = "<div class=\"news-feed\">\r\n  <!-- <app-favourite-bubble \r\n    class=\"hud-icon-favourite-bubble\"\r\n    [counter]=\"getUnreadFavouriteCount()\"\r\n  ></app-favourite-bubble> -->\r\n  <!-- <app-feed-bubble \r\n    class=\"hud-icon-feed-bubble\"\r\n    [counter]=\"getUnreadNewsCount()\"\r\n  ></app-feed-bubble> -->\r\n  <app-ticker \r\n    class=\"hud-icon-ticker\"\r\n    [news]=\"news\"\r\n    (itemClicked)=\"onTickerItemClick($event)\"\r\n  ></app-ticker>\r\n\r\n</div>\r\n\r\n<app-details-teaser class=\"selected-item-details\" *ngIf=\"hasSelectedItem\"\r\n  [news]=selectedItem\r\n  (teaserClicked)=\"onTeaserClick($event)\">\r\n</app-details-teaser>\r\n\r\n<app-details-long *ngIf=\"showLongVersion\"\r\n  [news]=\"selectedItem\"\r\n></app-details-long>\r\n\r\n<app-details-imagelist *ngIf=\"showLongVersion\"\r\n  [news]=\"selectedItem\"\r\n></app-details-imagelist>\r\n\r\n<!--\r\n<app-news-item class=\"selected-item-details\" *ngIf=\"hasSelectedItem()\"\r\n  [item]=\"selectedItem\"\r\n></app-news-item>\r\n-->"
 
 /***/ }),
 
@@ -1214,6 +1351,7 @@ var NewsFeedComponent = /** @class */ (function () {
                         response = _a.sent();
                         try {
                             this.news = response;
+                            console.log('received news: ' + this.news.length);
                         }
                         catch (e) {
                             console.log('failed assigning response to news array');
@@ -1352,14 +1490,15 @@ var NewsService = /** @class */ (function () {
             sortOrder: '-1',
             // content
             title: title,
-            shortDescription: shortDescription,
-            longDescription: 'loooong: ' + shortDescription,
+            shortdescription: shortDescription,
+            longdescription: 'loooong: ' + shortDescription,
             thumbnail: null,
             images: []
         };
     };
     var NewsService_1;
     NewsService.NEWS = 'news';
+    NewsService.dbtest = 'dbtest';
     NewsService = NewsService_1 = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
             providedIn: 'root'
@@ -1435,7 +1574,7 @@ module.exports = ".ticker{\r\n    display: -ms-grid;\r\n    display: grid;\r\n  
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--\n  - represents a list of news items, viewed in \"detail level: short description\"\n  - Single line of text, transitioning from one news item to the next. endlessly looping\n  \n-->\n\n<div class=\"ticker\">\n  \n  <div *ngFor=\"let item of news; let i = index\" \n  class=\"ticker-item\"\n  (click)=\"tickerItemClicked(item)\"\n  >\n  \n      <app-details-short \n        [news]=item \n        [totalNewsCount]=news.length\n        ></app-details-short>\n        \n        <!-- <app-details-teaser\n          [news]=item \n        >\n      </app-details-teaser> -->\n\n      <!--\n        <span class=\"badge\">({{i+1}}/{{news.length}}) {{item.title}}</span> {{item.shortDescription}} <span *ngIf=\"i<news.length - 1\"></span>\n        -->\n        </div>\n  <!--\n  <span>(2/3) [TITLE] Lorem ipsum dolor sit amet.</span> --- \n  <span>(1/3) [TITLE] Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span> --- \n  <span>(3/3) [TITLE] Lorem ipsum ...</span>\n  -->\n</div>"
+module.exports = "<!--\r\n  - represents a list of news items, viewed in \"detail level: short description\"\r\n  - Single line of text, transitioning from one news item to the next. endlessly looping\r\n  \r\n-->\r\n\r\n<div class=\"ticker\">\r\n  \r\n  <div *ngFor=\"let item of news; let i = index\" \r\n  class=\"ticker-item\"\r\n  (click)=\"tickerItemClicked(item)\"\r\n  >\r\n  \r\n      <app-details-short \r\n        [news]=item \r\n        [totalNewsCount]=news.length\r\n        ></app-details-short>\r\n        \r\n        <!-- <app-details-teaser\r\n          [news]=item \r\n        >\r\n      </app-details-teaser> -->\r\n\r\n      <!--\r\n        <span class=\"badge\">({{i+1}}/{{news.length}}) {{item.title}}</span> {{item.shortDescription}} <span *ngIf=\"i<news.length - 1\"></span>\r\n        -->\r\n        </div>\r\n  <!--\r\n  <span>(2/3) [TITLE] Lorem ipsum dolor sit amet.</span> --- \r\n  <span>(1/3) [TITLE] Lorem ipsum dolor sit amet, consetetur sadipscing elitr</span> --- \r\n  <span>(3/3) [TITLE] Lorem ipsum ...</span>\r\n  -->\r\n</div>"
 
 /***/ }),
 
