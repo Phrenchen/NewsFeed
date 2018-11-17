@@ -6,9 +6,47 @@
   <base href="/">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="cleartype" content="on">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <link rel="stylesheet" href="src/assets/font-stuff/css/webfonts.css">
+  <link rel="stylesheet" href="src/assets/font-stuff/css/rwt_vf_styles.css">
+
+  <script src="src/assets/font-stuff/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="src/assets/font-stuff/js/vendor/fontfaceobserver.js"></script>
+    <script type="text/javascript">
+  		(function() {
+  			document.documentElement.className += " wf-inactive"; 
+  	
+  			// Optimization for Repeat Views
+  			if( sessionStorage.foutFontsLoaded ) {
+  				document.documentElement.classList.remove("wf-inactive");
+  				document.documentElement.classList.add("wf-active");
+  				return;
+  			}
+  	
+  			var fontA = new FontFaceObserver("Amstelvar 1.1 VF", {
+  				});
+  				
+  	
+  			Promise.all([fontA.load()]).then(function () {
+  				document.documentElement.classList.remove("wf-inactive");
+  				document.documentElement.classList.add("wf-active");
+  	
+  				// Optimization for Repeat Views
+  				sessionStorage.foutFontsLoaded = true;
+  			});
+  		})();
+    </script>
+    
 </head>
 <body>
   <app-root></app-root>
+
+  <!-- Widowtamer -->
+  <script src="src/assets/font-stuff/js/vendor/widowtamer-min.js" defer></script>
+    
+  <script src="src/assets/font-stuff/js/main.js" defer></script>
 </body>
 </html>
