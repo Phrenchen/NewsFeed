@@ -2,13 +2,29 @@ var express = require('express');
 const path = require('path');
 const uuid = require('uuid');
 const { Pool } = require('pg');
+const fs = require('fs')
 var pgp = require('pg-promise')(/* options */);
-var app = express();
 
+var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5@localhost:5432/NewsFeed";
+const port = process.env.PORT || 8080;
+
+var app = express();
+var http = require('http');
 
 app.use(express.static(__dirname + "/dist/news-feed"));
 
-var dbUrl = process.env.DATABASE_URL ? process.env.DATABASE_URL : "postgres://defaultuser:1u2MtKAZBHouW5@localhost:5432/NewsFeed";
+
+const privateKey = fs.readFileSync( 'server.key' );
+const certificate = fs.readFileSync( 'server.cert' );
+
+var server = http.createServer({
+    key: privateKey,
+    cert: certificate
+  }, app).listen(port, () => {
+    console.log('Listening...' + port);
+  })
+
+
 
 const pool = new Pool({
     connectionString: dbUrl,
@@ -17,11 +33,10 @@ const pool = new Pool({
 
 
 // listen
-const port = 8080;
 
-app.listen(process.env.PORT || port, () => {
-    console.log(`-> listening on port ${port}`);
-});
+// app.listen(port, () => {
+//     console.log(`-> listening on port ${port}`);
+// });
 
 app.get('/', (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -118,4 +133,5 @@ async function initializeNews() {
 }
 
 // run on start
-initializeNews();
+// TODO: prepare setup without re-initializing existing stuff...something is delaying te start quite a bit :/ find it, stupid -.-
+// initializeNews();
