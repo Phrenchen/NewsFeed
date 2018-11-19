@@ -35,37 +35,37 @@ window.onresize = function(){
 }
 
 
-  var container = document.getElementById('example-ampersand');
-  var controls = document.getElementById('play-pause');
+  // var container = document.getElementById('example-ampersand');
+  // var controls = document.getElementById('play-pause');
   
-  controls.addEventListener('click', function(evt) {
-    var input=evt.target;
-    switch (input.name) {
-      case "play-pause":
-        var opposite = input.classList.contains('play');
+  // controls.addEventListener('click', function(evt) {
+  //   var input=evt.target;
+  //   switch (input.name) {
+  //     case "play-pause":
+  //       var opposite = input.classList.contains('play');
 
-  if (opposite) {
-    container.classList.remove('play');
-    container.classList.add('pause');
-    controls.classList.remove('play');
-    controls.classList.add('pause');
-  }         else {
-    container.classList.add('play');
-    container.classList.remove('pause');
-    controls.classList.add('play');
-    controls.classList.remove('pause');
-    var delayInMilliseconds = 4000; //1 second
+  // if (opposite) {
+  //   container.classList.remove('play');
+  //   container.classList.add('pause');
+  //   // controls.classList.remove('play');
+  //   // controls.classList.add('pause');
+  // }         else {
+  //   container.classList.add('play');
+  //   container.classList.remove('pause');
+  //   // controls.classList.add('play');
+  //   // controls.classList.remove('pause');
+  //   var delayInMilliseconds = 4000; //1 second
     
-    setTimeout(function() {
-      //your code to be executed after 1 second
-        container.classList.remove('play');
-        container.classList.add('pause');
-        controls.classList.remove('play');
-        controls.classList.add('pause');
-    }, delayInMilliseconds);
-  }
-        break;
+  //   setTimeout(function() {
+  //     //your code to be executed after 1 second
+  //       container.classList.remove('play');
+  //       container.classList.add('pause');
+  //       controls.classList.remove('play');
+  //       controls.classList.add('pause');
+  //   }, delayInMilliseconds);
+  // }
+  //       break;
 
-        }
-  });
+  //       }
+  // });
 

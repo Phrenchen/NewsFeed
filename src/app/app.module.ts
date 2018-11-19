@@ -17,6 +17,8 @@ import { ImageCardListComponent } from './image-card-list/image-card-list.compon
 import { ContextMenuComponent } from './context-menu/context-menu.component';
 import { DetailsImagelistComponent } from './news-feed/detail-level/details-imagelist/details-imagelist.component';
 import { ATestPageComponent } from './a-test-page/a-test-page.component';
+import { MixcloudComponent } from './mixcloud/mixcloud.component';
+import { MixcloudService } from './mixcloud/mixcloud.service';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,13 @@ import { ATestPageComponent } from './a-test-page/a-test-page.component';
     ImageCardListComponent,
     ContextMenuComponent,
     DetailsImagelistComponent,
-    ATestPageComponent
+    ATestPageComponent,
+    MixcloudComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [NewsService, ImageService],
+  providers: [NewsService, ImageService, MixcloudService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

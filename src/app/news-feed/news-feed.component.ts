@@ -30,7 +30,7 @@ export class NewsFeedComponent implements OnInit {
 
     try {
       this.news = response;
-      console.log('received news: ' + this.news.length);
+      // console.log('received news: ' + this.news.length);
     } catch (e) {
       console.log('failed assigning response to news array');
       this.news = [];
