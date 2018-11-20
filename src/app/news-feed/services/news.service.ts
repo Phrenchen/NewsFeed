@@ -27,13 +27,6 @@ export class NewsService {
   public requestNews(): Promise<any> {
     const endpoint = NewsService.getEndPointBase() + NewsService.NEWS;
 
-    // const config = {
-    //   headers: {
-    //     'Access-Control-Allow-Origin': '*',
-    //     'Access-Control-Allow-Methods' : 'GET'
-    //   }
-    // };
-
     return Axios.get(endpoint)
     // return Axios.get(endpoint, config)
       .then((response: AxiosResponse<any>) => {

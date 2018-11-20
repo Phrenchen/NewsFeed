@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
     private imageService: ImageService) {
     // enableProdMode();
 
-    setTimeout(this.getImages, 1000);
+    // setTimeout(this.getImages, 1000);
     // this.getImages();
 
   }

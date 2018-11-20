@@ -39,7 +39,7 @@ const pool = new Pool({
 // });
 
 app.get('/', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', '*', 'always');
     res.sendFile(path.join(__dirname, '/dist/news-feed/index.html'));
 });
 
