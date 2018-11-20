@@ -1,3 +1,9 @@
-<p>
-  mixcloud works!
-</p>
+<div *ngIf="cloudCastBlob">
+  <h2>{{cloudCastBlob.name}}</h2>
+  <div class="cloudcast-grid">
+  <div *ngFor="let cloudcast of cloudCastBlob.data" class="cloudcast">
+      <img [src]="cloudcast.pictures.medium">
+      <h4>{{ cloudcast.name }}</h4>
+    </div>
+  </div>
+</div>

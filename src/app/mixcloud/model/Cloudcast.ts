@@ -14,3 +14,10 @@ export interface Cloudcast {
     updated_time: string;       // date
     comment_count: number;
 }
+
+export interface CloudcastBlob {
+    name: string;
+    data: Array<Cloudcast>;
+    paging: string;
+
+}

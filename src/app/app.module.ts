@@ -19,6 +19,7 @@ import { DetailsImagelistComponent } from './news-feed/detail-level/details-imag
 import { ATestPageComponent } from './a-test-page/a-test-page.component';
 import { MixcloudComponent } from './mixcloud/mixcloud.component';
 import { MixcloudService } from './mixcloud/mixcloud.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { MixcloudService } from './mixcloud/mixcloud.service';
     MixcloudComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, HttpClientModule
   ],
   providers: [NewsService, ImageService, MixcloudService],
   bootstrap: [AppComponent]

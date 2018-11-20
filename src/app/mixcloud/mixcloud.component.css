@@ -1,0 +1,25 @@
+.cloudcast-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-gap: 5px;
+    width: 100%;
+    /* align-content: center; */
+    align-self: center;
+    /* align-items: center; */
+    /* justify-items: center; */
+    
+}
+
+.cloudcast{
+    display: grid;
+    justify-items: center;
+    padding: 15px;
+}
+
+h2{
+    text-align: center;
+}
+
+img{
+    max-width: 150px;
+}
