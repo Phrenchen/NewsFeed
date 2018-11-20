@@ -18,6 +18,6 @@ export interface Cloudcast {
 export interface CloudcastBlob {
     name: string;
     data: Array<Cloudcast>;
-    paging: string;
+    paging: Object;
 
 }

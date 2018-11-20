@@ -21,6 +21,13 @@ export class MixcloudComponent implements OnInit {
     const cloudCastBlob = await this.mixcloudService.getCloudcasts();
     try {
       this.cloudCastBlob = cloudCastBlob;
+      const nextBlobUrl = this.cloudCastBlob.paging['next'];
+
+      if (nextBlobUrl) {
+        const nextBlob = await this.mixcloudService.getNextCloudcastBatch(nextBlobUrl);
+        this.cloudCastBlob.data = this.cloudCastBlob.data.concat(nextBlob.data);
+      }
+
       // console.log('cloudCastBlob: ' + cloudCastBlob.name);
     } catch (e) {
       console.log('failed assigning response to news array');
