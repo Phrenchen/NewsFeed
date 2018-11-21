@@ -23,4 +23,5 @@ h2{
 
 img{
     max-width: 150px;
+    cursor: pointer;
 }

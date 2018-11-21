@@ -20,6 +20,7 @@ import { ATestPageComponent } from './a-test-page/a-test-page.component';
 import { MixcloudComponent } from './mixcloud/mixcloud.component';
 import { MixcloudService } from './mixcloud/mixcloud.service';
 import { HttpClientModule } from '@angular/common/http';
+import { MixcloudOverlayComponent } from './mixcloud/mixcloud-overlay/mixcloud-overlay.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     ContextMenuComponent,
     DetailsImagelistComponent,
     ATestPageComponent,
-    MixcloudComponent
+    MixcloudComponent,
+    MixcloudOverlayComponent
   ],
   imports: [
     BrowserModule, HttpClientModule

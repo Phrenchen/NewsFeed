@@ -1,0 +1,10 @@
+<div  >
+  <div *ngIf="isLoading" class="centered-overlay">Loading&#8230;</div>
+
+  <div *ngIf="!isLoading" class="centered-overlay"
+    (click)="closeOverlay()">
+    
+    <h3>{{cloudcast.name}}</h3>
+    <img [src]="cloudcast.pictures.extra_large">
+  </div>  
+</div>
