@@ -14,7 +14,7 @@ export class MixcloudOverlayComponent implements OnInit {
   @Output() closeMe: EventEmitter<any> = new EventEmitter<any>();
 
 
-  protected isLoading = false;
+  public isLoading = false;
 
 
 
