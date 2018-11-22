@@ -5,6 +5,28 @@
     (click)="closeOverlay()">
     
     <h3>{{cloudcast.name}}</h3>
+    <section class="play-count">
+      <span>
+          <p>recorded {{createdDate}}</p>
+          
+          
+            <span class="stat">
+              <span class="stat-icon">
+                <i class="fas fa-headphones-alt"></i>
+              </span>
+              <span>{{cloudcast.play_count}}</span>
+            </span>
+
+            <span class="stat">
+              <span class="stat-icon">
+                <i class="fas fa-thumbs-up"></i>
+              </span>
+              <span>{{cloudcast.favorite_count}}</span>
+            </span>
+
+        </span>
+    </section>
     <img [src]="cloudcast.pictures.extra_large">
+    
   </div>  
 </div>

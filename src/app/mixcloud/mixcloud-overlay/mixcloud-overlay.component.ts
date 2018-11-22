@@ -16,7 +16,42 @@ export class MixcloudOverlayComponent implements OnInit {
 
   public isLoading = false;
 
+  public get createdDate(): string {
+    const date: Date = new Date(this.cloudcast.created_time);
+    // return date.toDateString();
+    return this.getDateString(date);
+  }
 
+  public get audioLength(): string {
+    const durationDate: Date = new Date(this.cloudcast.audio_length);
+    const timeString = this.getDurationString(durationDate);
+    return timeString;
+  }
+
+  public getDurationString(date: Date): string {
+    return date.toTimeString().split(' ')[0];
+  }
+
+  // returns month / day / year
+  // mm/dd/yyyy
+  private getDateString(date: Date): string {
+    const dd = date.getDate();
+    let ddStr = dd.toString();
+    const mm = (date.getMonth() + 1); // January is 0!
+    let mmStr = mm.toString();
+    const yyyy = date.getFullYear();
+
+    if (dd < 10) {
+      ddStr = '0' + dd;
+    }
+
+    if (mm < 10) {
+      mmStr = '0' + mm;
+    }
+
+    const dateStr = ddStr + '.' + mmStr + '.' + yyyy;
+    return dateStr;
+  }
 
 
   constructor(private mixcloudService: MixcloudService) { }

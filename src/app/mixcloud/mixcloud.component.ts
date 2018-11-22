@@ -21,6 +21,19 @@ export class MixcloudComponent implements OnInit {
     }
   }
 
+  public get portraitUrl(): string {
+    if (this.castAvailable) {
+      return this.cloudCastBlob.data[0].user.pictures['medium'];
+    } else {
+      return '';
+    }
+  }
+
+  public get castAvailable(): boolean {
+    console.log('cast available: ' + (this.cloudCastBlob != null));
+    return this.cloudCastBlob != null;
+  }
+
   public onImageClicked(selectedCloudcast: Cloudcast): void {
     console.log(selectedCloudcast);
     this.selectedCast = selectedCloudcast;
@@ -36,6 +49,10 @@ export class MixcloudComponent implements OnInit {
 
     try {
       this.cloudCastBlob = cloudCastBlob;
+      console.log(this.cloudCastBlob);
+      console.log(this.cloudCastBlob['user']);
+      // console.log(this.cloudCastBlob['user']['pictures']);
+
 
       // TODO: preselect to initially show the overlay! disable!
       // this.selectedCast = this.cloudCastBlob.data[0];
