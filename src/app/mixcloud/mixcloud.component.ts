@@ -1,6 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext, Pipe, PipeTransform } from '@angular/core';
 import { MixcloudService } from './mixcloud.service';
 import { Cloudcast, CloudcastBlob } from './model/Cloudcast';
+import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizerImpl, SafeUrl } from '@angular/platform-browser/src/security/dom_sanitization_service';
+import { MathHelper } from '../shared/MathHelper';
+
+
+
+enum WidgetConfig {
+  NONE = '',
+  HIDE_COVER = 'hide_cover=1',
+  MINI = 'mini=1',
+  LIGHT = 'light=1',
+  AUTO_PLAY = 'autoplay=1',
+  HIDE_ARTWORK = 'hide_artwork=1'
+}
+
 
 @Component({
   selector: 'app-mixcloud',
@@ -8,17 +23,58 @@ import { Cloudcast, CloudcastBlob } from './model/Cloudcast';
   styleUrls: ['./mixcloud.component.css']
 })
 export class MixcloudComponent implements OnInit {
+
+  private static WIDGET_BASE_URL = 'https://www.mixcloud.com/widget/iframe/?feed=';
+
   public cloudCastBlob: CloudcastBlob;
 
-  public selectedCast: Cloudcast;
+  public selectedCast: Cloudcast = null;
 
-  constructor(private mixcloudService: MixcloudService) { }
+  private widgetSource: string;
+
+  private widgetConfig: Array<WidgetConfig> = new Array<WidgetConfig>();
+
+  constructor(private mixcloudService: MixcloudService,
+    private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     if (!this.selectedCast) {
       this.getCloudcasts();
 
     }
+
+    this.widgetConfig.push(WidgetConfig.HIDE_COVER,
+      WidgetConfig.MINI,
+      WidgetConfig.LIGHT
+      // WidgetConfig.AUTO_PLAY
+    );
+
+  }
+
+  public get iFrameHeight(): string {
+    // return this.isWidgetRequested ? '400px' : '0px';
+    return '400px';
+  }
+
+  public get isWidgetRequested(): boolean {
+    return this.selectedCast !== null;
+  }
+
+
+  public get widgetUrl(): string {
+    if (!this.widgetSource) {
+      return '';
+    }
+
+    let config = '';
+
+    this.widgetConfig.map(cfg => {
+      config += '&' + cfg;
+    });
+
+    const result = MixcloudComponent.WIDGET_BASE_URL + this.widgetSource + config;
+    // console.log(result);
+    return result;
   }
 
   public get portraitUrl(): string {
@@ -30,7 +86,6 @@ export class MixcloudComponent implements OnInit {
   }
 
   public get castAvailable(): boolean {
-    console.log('cast available: ' + (this.cloudCastBlob != null));
     return this.cloudCastBlob != null;
   }
 
@@ -44,29 +99,42 @@ export class MixcloudComponent implements OnInit {
   }
 
   private async getCloudcasts() {
-    // const debuggingLimit = 2;
-    const cloudCastBlob = await this.mixcloudService.getCloudcasts();
+    const limit = 0;  // 0 : get all
+    const cloudCastBlob = await this.mixcloudService.getCloudcasts(limit);
 
     try {
       this.cloudCastBlob = cloudCastBlob;
-      console.log(this.cloudCastBlob);
-      console.log(this.cloudCastBlob['user']);
-      // console.log(this.cloudCastBlob['user']['pictures']);
 
+      this.widgetSource = this.getWidgetSource(this.cloudCastBlob, -1);  // first item is initial source
+      // console.log('initial widget source: ' + this.widgetSource);
 
       // TODO: preselect to initially show the overlay! disable!
       // this.selectedCast = this.cloudCastBlob.data[0];
 
       // TODO: while has nextBlob for more than 200 cloudcasts
-      const nextBlobUrl = this.cloudCastBlob.paging['next'];
-      if (nextBlobUrl) {
-        const nextBlob = await this.mixcloudService.getNextCloudcastBatch(nextBlobUrl);
-        this.cloudCastBlob.data = this.cloudCastBlob.data.concat(nextBlob.data);
-      }
+      // const nextBlobUrl = this.cloudCastBlob.paging['next'];
+      // if (nextBlobUrl) {
+      //   const nextBlob = await this.mixcloudService.getNextCloudcastBatch(nextBlobUrl);
+      //   this.cloudCastBlob.data = this.cloudCastBlob.data.concat(nextBlob.data);
+      // }
 
       // console.log('cloudCastBlob: ' + cloudCastBlob.name);
     } catch (e) {
       console.log('failed assigning response to news array');
+    }
+  }
+
+  private getWidgetSource(cloudCastBlob: CloudcastBlob, castId: number): string {
+    try {
+      if (castId < 0) {
+        // select random cast
+        castId = MathHelper.getRandomInt(0, cloudCastBlob.data.length - 1);
+      }
+
+      return cloudCastBlob.data[castId].key;
+    } catch (e) {
+      console.log('failed to get widget source for item: ' + castId);
+      return '';
     }
   }
 }

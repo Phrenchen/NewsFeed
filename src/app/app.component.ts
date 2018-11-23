@@ -1,11 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { NewsFeedConsts } from './news-feed/model/NewsFeedConsts';
 import { NewsService } from './news-feed/services/news.service';
 import { ImageService } from './news-feed/services/photo.service';
 import { Image } from './image-card/Image';
 import ContextActionTarget from './context-menu/ContextActionTarget';
 import ContextMenuConsts from './context-menu/ContextMenuConsts';
+import { DomSanitizer } from '@angular/platform-browser';
 
+
+@Pipe({ name: 'safe' })
+export class SafePipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) { }
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppComponent, SafePipe } from './app.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { FeedBubbleComponent } from './news-feed/feed-bubble/feed-bubble.component';
 import { TickerComponent } from './news-feed/ticker/ticker.component';
@@ -39,7 +39,8 @@ import { MixcloudOverlayComponent } from './mixcloud/mixcloud-overlay/mixcloud-o
     DetailsImagelistComponent,
     ATestPageComponent,
     MixcloudComponent,
-    MixcloudOverlayComponent
+    MixcloudOverlayComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule, HttpClientModule
