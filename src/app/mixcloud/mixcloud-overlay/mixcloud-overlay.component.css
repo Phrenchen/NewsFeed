@@ -45,6 +45,9 @@ button{
 
     border: none;
     outline:none;
+
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /* input[type="button"]
