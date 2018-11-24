@@ -1,7 +1,7 @@
 <div *ngIf="castAvailable">
   <div class="header-grid">
     <img [src]="portraitUrl" class="header-portrait">
-    <h1>{{cloudCastBlob.name}}</h1>
+    <h2 >{{cloudCastBlob.name}}</h2>
     <img [src]="portraitUrl" class="header-portrait">
   </div>
 
@@ -11,7 +11,7 @@
   <div class="cloudcast-grid">
     <div *ngFor="let cloudcast of cloudCastBlob.data" class="cloudcast" (click)="onImageClicked(cloudcast)">
       <img [src]="cloudcast.pictures.medium" >
-      <h4>{{ cloudcast.name }}</h4>
+      <p>{{ cloudcast.name }}</p>
     </div>
   </div>
   <app-mixcloud-overlay *ngIf="selectedCast"
