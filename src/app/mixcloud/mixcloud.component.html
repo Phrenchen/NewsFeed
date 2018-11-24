@@ -10,10 +10,11 @@
   
   <div class="cloudcast-grid">
     <div *ngFor="let cloudcast of cloudCastBlob.data" class="cloudcast" (click)="onImageClicked(cloudcast)">
-      <img [src]="cloudcast.pictures.medium" >
+      <img class="cast-thumbnail" [src]="cloudcast.pictures.medium" >
       <p>{{ cloudcast.name }}</p>
     </div>
   </div>
+
   <app-mixcloud-overlay *ngIf="selectedCast"
     [cloudcast]="selectedCast"
     (closeMe)="closeOverlay();"

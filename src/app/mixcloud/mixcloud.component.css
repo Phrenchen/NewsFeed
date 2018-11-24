@@ -41,7 +41,12 @@
     text-align: center;
     cursor: pointer;
 
-    /* border: 1px solid black; */
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.cast-thumbnail{
+    margin-top: 16px;
 }
 
 h1{
