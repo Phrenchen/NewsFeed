@@ -12,6 +12,7 @@ export class MixcloudOverlayComponent implements OnInit {
   @Input() cloudcast: Cloudcast;
 
   @Output() closeMe: EventEmitter<any> = new EventEmitter<any>();
+  @Output() playMe: EventEmitter<string> = new EventEmitter<string>();
 
 
   public isLoading = false;
@@ -57,6 +58,11 @@ export class MixcloudOverlayComponent implements OnInit {
   constructor(private mixcloudService: MixcloudService) { }
 
   ngOnInit() {
+  }
+
+  public selectForWidget(): void {
+    this.playMe.emit(this.cloudcast.key);
+    this.closeOverlay();
   }
 
   public closeOverlay(): void {

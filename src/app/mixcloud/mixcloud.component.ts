@@ -89,6 +89,16 @@ export class MixcloudComponent implements OnInit {
     return this.cloudCastBlob != null;
   }
 
+
+  // event handling
+  public playCast(castSource: string): void {
+    if (castSource && castSource.length > 0) {
+      this.safeAdd(this.widgetConfig, WidgetConfig.AUTO_PLAY);
+      this.widgetSource = castSource;
+      // console.log('playing ' + this.widgetSource);
+    }
+  }
+
   public onImageClicked(selectedCloudcast: Cloudcast): void {
     console.log(selectedCloudcast);
     this.selectedCast = selectedCloudcast;
@@ -96,6 +106,17 @@ export class MixcloudComponent implements OnInit {
 
   public closeOverlay(): void {
     this.selectedCast = null;
+  }
+
+  // prevents (re-)adding (null) items
+  private safeAdd(collection: Array<any>, item: any): void {
+    if (!collection || !item) {
+      return;
+    }
+
+    if (collection.indexOf(item) < 0) {
+      collection.push(item);
+    }
   }
 
   private async getCloudcasts() {

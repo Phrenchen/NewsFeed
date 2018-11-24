@@ -17,6 +17,7 @@
   <app-mixcloud-overlay *ngIf="selectedCast"
     [cloudcast]="selectedCast"
     (closeMe)="closeOverlay();"
+    (playMe)="playCast($event)"
   ></app-mixcloud-overlay>
 
   
